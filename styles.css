@@ -1610,3 +1610,38 @@ body {
 #resend-btn:hover {
   text-decoration: underline;
 }
+
+/* ======================================== */
+/*    BACK BUTTON Login and Registration    */
+/* ======================================== */
+.back-link {
+  position: absolute;
+  top: 2rem;                 
+  left: 2.5rem;                
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #A1887F;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.back-link:hover {
+  color: var(--terracotta);
+  gap: 0.7rem;
+}
+
+.back-link svg {
+  transition: transform 0.25s ease;
+}
+
+.back-link:hover svg {
+  transform: translateX(-4px);
+}
+
+.auth-card {
+  position: relative; 
+}
