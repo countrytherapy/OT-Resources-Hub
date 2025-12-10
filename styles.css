@@ -1535,19 +1535,14 @@ body {
 /* ===================================================== */
 /*          REGISTRATION PAGE – SAME STYLE AS LOGIN      */
 /* ===================================================== */
-
-/* All previous login styles remain exactly the same above */
-
-/* These are the only additions/changes needed for registration */
 .auth-card h1 {
-  font-size: 2.7rem;            /* Same as login – keeps proportions */
+  font-size: 2.7rem;          
 }
 
 .auth-card p {
-  margin-bottom: 1.8rem;        /* Slightly less gap before the longer form */
+  margin-bottom: 1.8rem;      
 }
 
-/* Optional: make the "Already have an account?" text a bit softer */
 .auth-links p {
   color: #8D6E63;
   margin-bottom: 0.5rem;
@@ -1562,10 +1557,56 @@ body {
   text-decoration: underline;
 }
 
-/* Responsive tweak – on small screens, reduce side padding a touch */
 @media (max-width: 480px) {
   .auth-card {
     padding: 2.5rem 2.5rem;
     max-width: 90%;
   }
+}
+
+/* ======================================== */
+/*          2FA VERIFICATION PAGE           */
+/* ======================================== */
+
+.auth-card p {
+  margin-bottom: 1.8rem;       
+}
+
+.code-input-wrapper {
+  position: relative;
+}
+
+#totp-code {
+  font-size: 2rem;             
+  font-weight: 600;
+  letter-spacing: 1rem;         
+  text-align: center;
+  padding: 1rem 1rem;
+  border: 2px solid #FFEBDB;
+  border-radius: 20px;
+  background: #FFFBF8;
+  transition: all 0.3s;
+}
+
+#totp-code:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 5px rgba(217, 119, 87, 0.15);
+  outline: none;
+}
+
+#totp-code::placeholder {
+  color: #D7CCC8;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
+/* Resend link styling */
+#resend-btn {
+  color: var(--terracotta);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#resend-btn:hover {
+  text-decoration: underline;
 }
