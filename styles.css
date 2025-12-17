@@ -1654,6 +1654,7 @@ body {
   font-size: 2.7rem;
   color: var(--deep-brown);
   margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
 .auth-card > p {
@@ -1737,10 +1738,15 @@ body {
 
 /* Message Feedback */
 #message {
-  margin: 1.5rem 0;
-  font-weight: 500;
-  min-height: 1.5em;
+  margin: 0;
+  min-height: 0;
 }
+
+#message:not(:empty) {
+  margin: 1rem 0;
+  min-height: 1.2em;
+}
+
 
 /* Responsive */
 @media (max-width: 480px) {
