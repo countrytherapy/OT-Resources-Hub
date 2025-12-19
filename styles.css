@@ -1759,3 +1759,20 @@ body {
     font-size: 2.3rem;
   }
 }
+
+.contact-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* FORM ON LEFT */
+.contact-split-form {
+  order: 1;
+}
+
+/* TEXT ON RIGHT */
+.contact-split-text {
+  order: 2;
+}
