@@ -1759,20 +1759,124 @@ body {
     font-size: 2.3rem;
   }
 }
+/* ===================================================== */
+/*           LANDING SEO/ WEB OPTIMSATION                */
+/* ===================================================== */
+.seo-contact {
+  background: #fff8f3;
+  padding: 6rem 0;
+}
 
 .contact-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  gap: 4rem;
+  align-items: stretch;
 }
 
-/* FORM ON LEFT */
+/* Left column - form */
 .contact-split-form {
-  order: 1;
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(63, 69, 81, 0.18);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-/* TEXT ON RIGHT */
+.contact-split-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.contact-split-form p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-split-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-split-form label {
+  font-weight: 600;
+  margin-bottom: .5rem;
+  display: block;
+}
+
+.contact-split-form input,
+.contact-split-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.contact-split-form textarea {
+  resize: none;
+}
+
+.contact-split-form .submit-btn {
+  padding: 1rem 2rem;
+  background-color: var(--terracotta);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-split-form .submit-btn:hover {
+  background-color: #d05a35;
+}
+
+/* Right column - text + image */
 .contact-split-text {
-  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-hero-mini {
+  margin-bottom: 2rem;
+}
+
+.contact-hero-mini h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-hero-mini p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Image below text */
+.contact-text-image {
+  flex-grow: 1;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.contact-text-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-text-image {
+    height: 300px;
+    margin-top: 1.5rem;
+  }
 }
