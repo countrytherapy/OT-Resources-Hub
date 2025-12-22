@@ -7,11 +7,14 @@
     <title>Shop Products - OT Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Snipcart (free & safe) -->
-    <link rel="preconnect" href="https://app.snipcart.com">
-    <link rel="preconnect" href="https://cdn.snipcart.com">
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.0/default/snipcart.css" />
-    <script async src="https://cdn.snipcart.com/themes/v3.4.0/default/snipcart.js"></script>
+  <script>
+    window.SnipcartSettings = {
+        publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+        loadStrategy: 'on-user-interaction',
+    };
+
+    (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+</script>
 </head>
 <body>
 
@@ -48,7 +51,7 @@
                 <img src="/assets/Benefits-of-cooking.jpg" alt="Sensory Pack">
                 <div class="product-info">
                     <h3>Ultimate Sensory Pack</h3>
-                    <p class="price">$19.99</p>
+                    <p class="price">19.99 AED</p>
                     <button class="snipcart-add-item add-to-cart-btn"
                         data-item-id="sensory-pack-01"
                         data-item-price="19.99"
@@ -65,7 +68,7 @@
                 <img src="/assets/Executive-Functioning-Skills.jpg" alt="Executive Function">
                 <div class="product-info">
                     <h3>Executive Function Toolkit</h3>
-                    <p class="price">$24.99</p>
+                    <p class="price">24.99 AED</p>
                     <button class="snipcart-add-item add-to-cart-btn"
                         data-item-id="ef-toolkit-01"
                         data-item-price="24.99"
@@ -81,7 +84,7 @@
                 <img src="/assets/benefits-of-cutting-skills.jpeg" alt="Fine Motor">
                 <div class="product-info">
                     <h3>Fine Motor Mastery Bundle</h3>
-                    <p class="price">$15.00</p>
+                    <p class="price">15.00 AED</p>
                     <button class="snipcart-add-item add-to-cart-btn"
                         data-item-id="fine-motor-01"
                         data-item-price="15.00"
@@ -106,8 +109,5 @@
             <p>© 2025 Occupational Therapy Resource Hub.</p>
         </div>
     </footer>
-
-    <!-- Snipcart Hidden Config -->
-    <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_TEST_KEY_HERE"></div>
 </body>
 </html>
