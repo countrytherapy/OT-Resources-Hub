@@ -1,32 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head as your products.html, including Snipcart script -->
+    <link rel="icon" href="../assets/Logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5 Areas of Attention - OT Resource Hub</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        window.SnipcartSettings = {
+            publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+            loadStrategy: 'on-user-interaction',
+        };
+
+        (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+    </script>
 </head>
 <body>
-    <!-- header/nav here -->
 
-    <section class="product-detail">
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="../assets/Logo.png" alt="OT Resource Hub Logo" class="logo-img">
+                    <span class="logo-text">OT Resource Hub</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../products.html">Shop</a></li>
+                <li><a href="../learning.html">Learning</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="snipcart-checkout cart-button" style="cursor:pointer;">
+                Cart (<span class="snipcart-items-count">0</span>)
+            </div>
+        </nav>
+    </header>
+
+    <section class="product-detail-section">
         <div class="product-detail-grid">
-            <img src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" alt="5 Areas of Attention" class="product-detail-img">
+            <!-- Left: Image Carousel -->
+            <div class="carousel">
+                <div class="carousel-images" id="carouselImages">
+                    <!-- Replace with 4-6 relevant images for each product -->
+                    <img src="https://www.lumierechild.com/wp-content/uploads/2020/11/mother-helping-child-with-sensory-processing-disorder-using-occupational-therapy-techniques-at-home.jpeg" alt="Sensory activity example">
+                    <img src="https://kids-first.com.au/wp-content/uploads/2024/08/sensory-play.png" alt="Calming sensory play">
+                    <img src="https://www.mycerebralpalsychild.org/wp-content/uploads/2018/02/sensory-therapy-cerebral-palsy.jpg" alt="Sensory therapy session">
+                    <img src="https://occupationaltherapy.com.au/wp-content/uploads/2020/09/AdobeStock_332749045-min-scaled.jpeg" alt="Child engaging senses">
+                    <img src="https://developlearngrow.com/wp-content/uploads/2021/02/Alerting-Sensory-Strategies-1.png" alt="Alerting strategies chart">
+                    <img src="https://connectability.ca/wp-content/uploads/2020/07/OT-diagram1-1.png" alt="Sensory processing patterns">
+                </div>
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+
+            <!-- Right: Details -->
             <div class="product-detail-info">
                 <h1>5 Areas of Attention</h1>
                 <p class="price">2.50 AED</p>
-                <p class="description">A comprehensive guide explaining the five key areas of attention and practical strategies to support focus and learning in children. Perfect for parents and therapists.</p>
-                <button class="snipcart-add-item add-to-cart-btn"
+                <p class="description">
+                    This digital guide breaks down the five key areas of attention (focused, sustained, selective, alternating, and divided) 
+                    with clear explanations, real-life examples, and practical occupational therapy strategies to help children improve focus, 
+                    learning, and daily functioning. Includes printable activities, visual supports, and tips for parents and educators.
+                </p>
+                <button class="snipcart-add-item add-to-cart-btn large"
                     data-item-id="5-areas-of-attention"
                     data-item-price="2.50"
                     data-item-url="/5-areas-of-attention.html"
                     data-item-name="5 Areas of Attention"
-                    data-item-description="Guide to the five areas of attention with OT strategies">
+                    data-item-description="Comprehensive guide to the five areas of attention with OT strategies"
+                    data-item-file-guid="YOUR_GUID_HERE">  <!-- Replace with your Snipcart file GUID -->
                     Add to Cart
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Your footer here -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Occupational Therapy Resource Hub.</p>
+                <div class="footer-links">
+                <a href="../contact.html">Privacy Policy</a>
+                <a href="../contact.html">Terms of Service</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const images = document.querySelector('#carouselImages');
+        const totalSlides = images.children.length;
+
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            images.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
 </body>
 </html>

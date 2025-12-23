@@ -1762,7 +1762,6 @@ body {
 /* ===================================================== */
 /*           LANDING SEO/ WEB OPTIMSATION                */
 /* ===================================================== */
-/* Scoped only to SEO Contact Section */
 .seo-contact .contact-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Left: form, Right: text+image */
@@ -1825,4 +1824,92 @@ body {
 }
 .contact-hero-mini p {
     margin-bottom: 1.5rem; /* adjust the spacing */
+}
+/* ===================================================== */
+/*           PRODUCTS PREVIEW AND DETAILS                */
+/* ===================================================== */
+.product-detail-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Simple Carousel */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.product-detail-info h1 {
+    margin-top: 0;
+    font-size: 2.5em;
+}
+
+.product-detail-info .price {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c7a2c;
+    margin: 20px 0;
+}
+
+.product-detail-info .description {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.add-to-cart-btn.large {
+    padding: 18px 40px;
+    font-size: 1.3em;
+    width: 100%;
+    max-width: 400px;
 }
