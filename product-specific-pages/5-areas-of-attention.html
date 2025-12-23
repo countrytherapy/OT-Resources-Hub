@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5 Areas of Attention — OT Resource Hub</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../styles.css">
 
     <script>
         window.SnipcartSettings = {
@@ -31,24 +31,77 @@
         .carousel {
             background: white;
             border-radius: 20px;
-            padding: 1rem;
+            padding: 0.6rem;
             box-shadow: 0 12px 30px rgba(139,111,71,0.08);
+            position: relative;
+            overflow: hidden;
         }
 
-        .carousel img {
+        .carousel-track {
+            display: flex;
+            transition: transform 400ms ease;
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            display: block;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
             width: 100%;
             height: 480px;
             object-fit: cover;
-            border-radius: 14px;
+            display: block;
         }
 
-        .thumbs {
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(0,0,0,0.06);
+            color: var(--deep-brown);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             display: flex;
-            gap: 0.6rem;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(139,111,71,0.08);
+        }
+
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+
+        .carousel-btn:focus { outline: 3px solid var(--mustard); }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
             margin-top: 0.8rem;
         }
 
-        .thumbs img { height: 66px; width: 110px; object-fit: cover; border-radius: 8px; cursor: pointer; }
+        .carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #E9E3E0;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .carousel-dots .dot[aria-pressed="true"] { background: var(--terracotta); }
+
+        @media (max-width: 740px){
+            .carousel-slide img { height: 320px; }
+        }
 
         .product-side {
             background: white;
@@ -92,13 +145,23 @@
     </header>
 
     <main class="product-detail container">
-        <section class="carousel">
-            <img id="main-img" src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" alt="5 Areas of Attention - preview">
-            <div class="thumbs">
-                <img src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" data-src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" alt="thumb1">
-                <img src="https://www.griffinot.com/wp-content/uploads/Sensory-Processing-Disorder-GriffinOT-Sensory-Integration-jpg.webp" data-src="https://www.griffinot.com/wp-content/uploads/Sensory-Processing-Disorder-GriffinOT-Sensory-Integration-jpg.webp" alt="thumb2">
-                <img src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" data-src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" alt="thumb3">
+        <section class="carousel" aria-label="Product image carousel" tabindex="0">
+            <div class="carousel-track" id="carousel-track">
+                <div class="carousel-slide" data-index="0">
+                    <img src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" alt="5 Areas of Attention preview 1">
+                </div>
+                <div class="carousel-slide" data-index="1">
+                    <img src="https://www.griffinot.com/wp-content/uploads/Sensory-Processing-Disorder-GriffinOT-Sensory-Integration-jpg.webp" alt="5 Areas of Attention preview 2">
+                </div>
+                <div class="carousel-slide" data-index="2">
+                    <img src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" alt="5 Areas of Attention preview 3">
+                </div>
             </div>
+
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
+
+            <div class="carousel-dots" role="tablist" aria-label="Select image" id="carousel-dots"></div>
         </section>
 
         <aside class="product-side">
@@ -142,8 +205,77 @@
         </div>
     </footer>
     <script>
-        // Carousel thumbnails
-        document.querySelectorAll('.thumbs img').forEach(t=>t.addEventListener('click', e=>{ document.getElementById('main-img').src = e.target.dataset.src; }));
+        // Lightweight accessible carousel with autoplay, arrows, dots and swipe
+        (function(){
+            const track = document.getElementById('carousel-track');
+            const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+            const dotsContainer = document.getElementById('carousel-dots');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const carouselEl = document.querySelector('.carousel');
+            const addBtn = document.getElementById('add-to-cart');
+
+            let index = 0;
+            const intervalMs = 4000;
+            let timer = null;
+            let startX = null;
+
+            function createDots(){
+                slides.forEach((s,i)=>{
+                    const b = document.createElement('button');
+                    b.className = 'dot';
+                    b.setAttribute('aria-label', 'Image ' + (i+1));
+                    b.setAttribute('aria-pressed', i===0 ? 'true' : 'false');
+                    b.addEventListener('click', ()=> goTo(i));
+                    dotsContainer.appendChild(b);
+                });
+            }
+
+            function updateDots(){
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((d,i)=> d.setAttribute('aria-pressed', i===index ? 'true' : 'false'));
+            }
+
+            function goTo(i){
+                index = (i + slides.length) % slides.length;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                updateDots();
+                updateDataImage();
+            }
+
+            function prev(){ goTo(index-1); }
+            function next(){ goTo(index+1); }
+
+            function startAuto(){ stopAuto(); timer = setInterval(next, intervalMs); }
+            function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+
+            function updateDataImage(){
+                try{
+                    const img = slides[index].querySelector('img');
+                    if(img && addBtn){ addBtn.setAttribute('data-item-image', img.src); }
+                }catch(e){/* ignore */}
+            }
+
+            // touch swipe
+            carouselEl.addEventListener('touchstart', (e)=>{ startX = e.changedTouches[0].clientX; stopAuto(); });
+            carouselEl.addEventListener('touchend', (e)=>{
+                if(startX==null) return; const dx = e.changedTouches[0].clientX - startX; if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); }
+                startX = null; startAuto();
+            });
+
+            // mouse pause/resume
+            carouselEl.addEventListener('mouseenter', stopAuto);
+            carouselEl.addEventListener('mouseleave', startAuto);
+
+            // keyboard
+            carouselEl.addEventListener('keydown', (e)=>{ if(e.key === 'ArrowLeft') prev(); if(e.key === 'ArrowRight') next(); });
+
+            prevBtn.addEventListener('click', ()=>{ prev(); });
+            nextBtn.addEventListener('click', ()=>{ next(); });
+
+            // init
+            createDots(); updateDots(); goTo(0); startAuto();
+        })();
 
         // Quantity controls
         const qtyInput = document.getElementById('qty-input');
