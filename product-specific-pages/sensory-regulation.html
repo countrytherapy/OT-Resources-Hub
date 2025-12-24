@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5 Areas of Attention — OT Resource Hub</title>
+    <title>Sensory Regulation — OT Resource Hub</title>
     <link rel="stylesheet" href="../styles.css">
 
     <script>
@@ -15,112 +15,6 @@
 
         (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
     </script>
-
-    <style>
-        /* Product detail styles */
-        .product-detail {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 2.5rem;
-            align-items: start;
-        }
-
-        .carousel {
-            background: white;
-            border-radius: 20px;
-            padding: 0.6rem;
-            box-shadow: 0 12px 30px rgba(139,111,71,0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 400ms ease;
-            will-change: transform;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            min-width: 100%;
-            display: block;
-            border-radius: 14px;
-            overflow: hidden;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 480px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.95);
-            border: 1px solid rgba(0,0,0,0.06);
-            color: var(--deep-brown);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(139,111,71,0.08);
-        }
-
-        .carousel-btn.prev { left: 12px; }
-        .carousel-btn.next { right: 12px; }
-
-        .carousel-btn:focus { outline: 3px solid var(--mustard); }
-
-        .carousel-dots {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 0.8rem;
-        }
-
-        .carousel-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #E9E3E0;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .carousel-dots .dot[aria-pressed="true"] { background: var(--terracotta); }
-
-        @media (max-width: 740px){
-            .carousel-slide img { height: 320px; }
-        }
-
-        .product-side {
-            background: white;
-            padding: 1.6rem;
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(139,111,71,0.08);
-        }
-
-        .price { color: var(--terracotta); font-weight: 800; font-size: 1.6rem; margin: 0.6rem 0; }
-
-        .qty-controls { display:flex; align-items:center; gap:0.6rem; margin: 1rem 0; }
-        .qty-controls button { padding: 0.6rem 1rem; border-radius: 8px; border:1px solid #eee; background:#fff; cursor:pointer; }
-        .qty-controls input { width:64px; text-align:center; padding:0.6rem; border-radius:8px; border:1px solid #eee; }
-
-        .actions { display:flex; gap:0.8rem; align-items:center; margin-top:1rem; }
-
-        .btn-continue { background:transparent; border:1px solid var(--terracotta); color:var(--terracotta); padding:0.85rem 1.4rem; border-radius:12px; cursor:pointer; }
-
-    </style>
 </head>
 <body>
 
@@ -165,9 +59,9 @@
         </section>
 
         <aside class="product-side">
-            <h1>5 Areas of Attention</h1>
+            <h1>Sensory Regulation</h1>
             <p class="price">2.50 AED</p>
-            <p>A concise guide to the five core areas that influence attention in children and strategies to support learning and engagement.</p>
+            <p>A supportive guide that explains sensory regulation and provides strategies to help children stay calm, focused and organised.</p>
 
             <div style="margin-top:1rem"><strong>Includes:</strong> downloadable PDF, printable activities</div>
 
@@ -179,10 +73,11 @@
 
             <div class="actions">
                 <button id="add-to-cart" class="snipcart-add-item add-to-cart" 
-                    data-item-id="5-areas-of-attention"
-                    data-item-name="5 Areas of Attention"
+                    data-item-id="Sensory-Regulation"
+                    data-item-file-guid="42e2f5e9-f0c6-4dcf-a3b7-0f30a809fa8e"
+                    data-item-name="Sensory Regulation"
                     data-item-price="2.50"
-                    data-item-url="/product-specific-pages/5-areas-of-attention.html"
+                    data-item-url="https://www.otresoursehub.com/product-specific-pages/5-areas-of-attention.html"
                     data-item-description="Five areas that affect attention with strategies and activities."
                     data-item-image="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg"
                     data-item-quantity="1"
