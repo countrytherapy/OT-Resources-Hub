@@ -10,8 +10,7 @@
         window.SnipcartSettings = {
             publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
             addProductBehavior: 'none',
-            modalStyle: 'side',
-            currency: 'aed' 
+            modalStyle: 'side'
         };
 
         (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
@@ -43,13 +42,7 @@
         <section class="carousel" aria-label="Product image carousel" tabindex="0">
             <div class="carousel-track" id="carousel-track">
                 <div class="carousel-slide" data-index="0">
-                    <img src="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg" alt="5 Areas of Attention preview 1">
-                </div>
-                <div class="carousel-slide" data-index="1">
-                    <img src="https://www.griffinot.com/wp-content/uploads/Sensory-Processing-Disorder-GriffinOT-Sensory-Integration-jpg.webp" alt="5 Areas of Attention preview 2">
-                </div>
-                <div class="carousel-slide" data-index="2">
-                    <img src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" alt="5 Areas of Attention preview 3">
+                    <img src="../assets/product-thumbnails/5 areas of attention thumbnail.jpg" alt="5 Areas of Attention preview 1">
                 </div>
             </div>
 
@@ -74,11 +67,11 @@
 
             <div class="actions">
                 <button id="add-to-cart" class="snipcart-add-item add-to-cart" 
-                    data-item-id="5-areas-of-attention"
+                    data-item-id="5-Strategies-to-Support-people-with-ASD-or-SPD"
                     data-item-file-guid="42e2f5e9-f0c6-4dcf-a3b7-0f30a809fa8e"
                     data-item-name="5 Areas of Attention"
                     data-item-price="2.50"
-                    data-item-url="https://www.otresoursehub.com/product-specific-pages/5-areas-of-attention.html"
+                    data-item-url="https://www.otresoursehub.com/product-specific-pages/5-Strategies-to-Support-people-with-ASD-or-SPD.html"
                     data-item-description="Five areas that affect attention with strategies and activities."
                     data-item-image="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg"
                     data-item-quantity="1"
