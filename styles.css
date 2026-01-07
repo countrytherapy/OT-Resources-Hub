@@ -903,12 +903,12 @@ footer::after {
 }
 
 /* ==================================================================
-                 SHOP / PRODUCTS PAGE SPECIFIC STYLES
+                 SHOP / PRODUCTS PAGE SPECIFIC STYLES – MOBILE-OPTIMIZED
    ================================================================== */
 
 .products-hero {
     background: linear-gradient(135deg, var(--soft-peach) 0%, var(--mustard) 70%, #E8F5E9 100%);
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;                  /* Reduced padding */
     text-align: center;
     border-radius: 36px;
     margin: 3rem auto;
@@ -927,14 +927,14 @@ footer::after {
 }
 
 .products-hero h1 {
-    font-size: 3.4rem;
+    font-size: 2.8rem;                     /* Smaller on all screens */
     color: var(--deep-brown);
     margin-bottom: 1rem;
     font-family: 'Playfair Display', serif;
 }
 
 .products-hero p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;                     /* Slightly smaller */
     color: #6D4C41;
     max-width: 720px;
     margin: 0 auto;
@@ -942,58 +942,92 @@ footer::after {
 }
 
 .products-section {
-    padding: 4rem 0;
+    padding: 3rem 0;                       /* Less vertical space */
 }
 
-/* ==================== PRODUCTS GRID – RESPONSIVE 2 COLUMNS ON MOBILE ==================== */
+/* PRODUCTS GRID – Smaller & truly mobile-friendly */
 .products-grid {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Default: 3–4 columns on desktop/tablet */
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Desktop: smaller min */
+    gap: 2rem;                                     /* Tighter gap overall */
 }
 
-/* Mobile: Force exactly 2 columns */
+/* Mobile overrides – smaller cards, 2 columns, compact everything */
 @media (max-width: 768px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);   /* Exactly 2 products side-by-side */
-        gap: 1.8rem;                             /* Slightly tighter spacing */
-        padding: 0 1.2rem;
+        grid-template-columns: repeat(2, 1fr);     /* Exactly 2 columns */
+        gap: 1rem;                                 /* Very tight spacing */
+        padding: 0 0.8rem;
     }
-}
 
-/* Very small phones – keep 2 columns but tighter */
-@media (max-width: 480px) {
-    .products-grid {
-        gap: 1.4rem;
-        padding: 0 1rem;
+    .product-card {
+        border-radius: 24px;                       /* Slightly smaller corners */
     }
 
     .product-card img {
-        height: 220px;                           /* Slightly shorter images */
+        height: 160px;                             /* Much smaller images */
     }
 
     .product-info {
-        padding: 1.6rem 1rem;
+        padding: 1.2rem 1rem;                      /* Less padding inside card */
     }
 
     .product-info h3 {
-        font-size: 1.35rem;
+        font-size: 1.15rem;                        /* Compact title */
+        margin: 0 0 0.5rem;
     }
 
     .price {
-        font-size: 1.6rem;
+        font-size: 1.4rem;                         /* Smaller price */
+        margin: 0.5rem 0;
     }
 
     .add-to-cart-btn {
-        padding: 1rem 1.6rem;
-        font-size: 1rem;
+        padding: 0.8rem 1.2rem;                    /* Smaller button */
+        border-radius: 40px;
+        font-size: 0.95rem;
+        box-shadow: 0 6px 18px rgba(217, 119, 87, 0.25);
+    }
+
+    .add-to-cart-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 32px rgba(217, 119, 87, 0.35);
     }
 }
 
-/* Rest of your existing product card styles (keep unchanged) */
+/* Extra small phones – even tighter */
+@media (max-width: 480px) {
+    .products-grid {
+        gap: 0.8rem;
+        padding: 0 0.5rem;
+    }
+
+    .product-card img {
+        height: 140px;
+    }
+
+    .product-info {
+        padding: 1rem 0.8rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .price {
+        font-size: 1.3rem;
+    }
+
+    .add-to-cart-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Keep your existing card styles (just refined) */
 .product-card {
     background: white;
     border-radius: 32px;
@@ -1005,14 +1039,14 @@ footer::after {
 }
 
 .product-card:hover {
-    transform: translateY(-16px);
+    transform: translateY(-12px);                  /* Subtler hover */
     box-shadow: 0 30px 70px rgba(139, 111, 71, 0.24);
     border-color: var(--peach);
 }
 
 .product-card img {
     width: 100%;
-    height: 260px;
+    height: 220px;                                 /* Smaller base height */
     object-fit: cover;
     transition: transform 0.4s ease;
 }
@@ -1022,31 +1056,31 @@ footer::after {
 }
 
 .product-info {
-    padding: 2rem 1.5rem;
+    padding: 1.6rem 1.2rem;                        /* Reduced from original */
 }
 
 .product-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;                            /* Slightly smaller base */
     color: var(--deep-brown);
-    margin: 0 0 0.8rem;
+    margin: 0 0 0.6rem;
     line-height: 1.3;
 }
 
 .price {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--terracotta);
-    margin: 0.8rem 0;
+    margin: 0.6rem 0;
 }
 
 .add-to-cart-btn {
     background: linear-gradient(135deg, var(--terracotta), #E68A6B);
     color: white;
     border: none;
-    padding: 1.1rem 2rem;
+    padding: 1rem 1.6rem;                          /* Smaller base button */
     border-radius: 50px;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
     width: 100%;
     transition: all 0.4s ease;
@@ -1058,14 +1092,12 @@ footer::after {
     box-shadow: 0 20px 45px rgba(217, 119, 87, 0.4);
 }
 
-/* Cart button in navbar */
-.cart-button {
-    background: var(--terracotta);
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
+/* Cart button in navbar – smaller on mobile */
+@media (max-width: 768px) {
+    .cart-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+    }
 }
 
 /* ==================================================================
