@@ -945,15 +945,55 @@ footer::after {
     padding: 4rem 0;
 }
 
+/* ==================== PRODUCTS GRID – RESPONSIVE 2 COLUMNS ON MOBILE ==================== */
 .products-grid {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Default: 3–4 columns on desktop/tablet */
     gap: 3rem;
 }
 
+/* Mobile: Force exactly 2 columns */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);   /* Exactly 2 products side-by-side */
+        gap: 1.8rem;                             /* Slightly tighter spacing */
+        padding: 0 1.2rem;
+    }
+}
+
+/* Very small phones – keep 2 columns but tighter */
+@media (max-width: 480px) {
+    .products-grid {
+        gap: 1.4rem;
+        padding: 0 1rem;
+    }
+
+    .product-card img {
+        height: 220px;                           /* Slightly shorter images */
+    }
+
+    .product-info {
+        padding: 1.6rem 1rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.35rem;
+    }
+
+    .price {
+        font-size: 1.6rem;
+    }
+
+    .add-to-cart-btn {
+        padding: 1rem 1.6rem;
+        font-size: 1rem;
+    }
+}
+
+/* Rest of your existing product card styles (keep unchanged) */
 .product-card {
     background: white;
     border-radius: 32px;
