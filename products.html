@@ -6,435 +6,378 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Products - OT Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
-
+</head>
 <body>
   <div id="shared-header"></div>
-
-  <script src="/snipcart-setup.js"></script>
   <script src="/currency.js"></script>
 
   <script>
+
+    window.SnipcartSettings = {
+        publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+        loadStrategy: 'on-user-interaction',
+    };
+
+    (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+
     // Load shared header
     fetch('/header.html')
       .then(r => r.text())
       .then(html => document.getElementById('shared-header').innerHTML = html);
   </script>
 
-    <section class="products-hero">
-        <h1>Shop Our Products</h1>
-        <p>Digital downloads, therapy tools, and sensory resources created by licensed OTs.</p>
-    </section>
+  <section class="products-hero">
+    <h1>Shop Our Products</h1>
+    <p>Digital downloads, therapy tools, and sensory resources created by licensed OTs.</p>
+  </section>
 
-    <section class="products-section">
-        <div class="products-grid">
+  <section class="products-section">
+    <div class="products-grid">
 
-            <!-- 5 Areas of Attention -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/5 areas of attention thumbnail.jpg" alt="5 Areas of Attention">
-                <div class="product-info">
-                    <h3>5 Areas of Attention</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/5-areas-of-attention.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- 5 Strategies to Support People with ASD or SPD -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/5 strategies to support people with asd or spd.jpg" alt="5 Strategies to Support People with ASD or SPD">
-                <div class="product-info">
-                    <h3>5 Strategies to Support People with ASD or SPD</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/5-strategies-asd-spd.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Anxiety Self Help Tool -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/anxiety self help tool.jpg" alt="Anxiety Self Help Tool">
-                <div class="product-info">
-                    <h3>Anxiety Self Help Tool</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/anxiety-self-help-tool.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Budgeting Guide -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/simple spending thumbnail.jpg" alt="Budgeting Guide">
-                <div class="product-info">
-                    <h3>Budgeting Guide</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/budgeting-guide.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Cognitive Exercise Program -->
-            <div class="product-card">
-                <img src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" alt="Cognitive Exercise Program">
-                <div class="product-info">
-                    <h3>Cognitive Exercise Program</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/cognitive-exercise-program.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Developing Co-ordination -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/Developing Co-cordination.jpg" alt="Developing Co-ordination">
-                <div class="product-info">
-                    <h3>Developing Co-ordination</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/developing-co-ordination.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Fine Motor Skills -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/fine motor skills.jpg" alt="Fine Motor Skills">
-                <div class="product-info">
-                    <h3>Fine Motor Skills</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/fine-motor-skills.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Games to Boost Executive Functioning Skills -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/games to boost executive functioning thumbnail.jpg" alt="Games to Boost Executive Functioning Skills">
-                <div class="product-info">
-                    <h3>Games to Boost Executive Functioning Skills</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/games-executive-functioning.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Hand Dominance -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/hand dominance thumbnail.jpg" alt="Hand Dominance">
-                <div class="product-info">
-                    <h3>Hand Dominance</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/hand-dominance.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- How to Manage Anxiety -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/how to manage anxiety.jpg" alt="How to Manage Anxiety">
-                <div class="product-info">
-                    <h3>How to Manage Anxiety</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/how-to-manage-anxiety.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- How to Teach Cutting Skills -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/cutting skills thumbnail.jpg" alt="How to Teach Cutting Skills">
-                <div class="product-info">
-                    <h3>How to Teach Cutting Skills</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/how-to-teach-cutting-skills.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- How to Teach Jumping Skills -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/how to teach jumping skills thumbnail.jpg" alt="How to Teach Jumping Skills">
-                <div class="product-info">
-                    <h3>How to Teach Jumping Skills</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/how-to-teach-jumping-skills.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Internet Tips -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/internet tips thumbnail.jpg" alt="Internet Tips">
-                <div class="product-info">
-                    <h3>Internet Tips</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/internet-tips.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Learn to Play -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/learn to play.jpg" alt="Learn to Play">
-                <div class="product-info">
-                    <h3>Learn to Play</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/learn-to-play.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Motor Development -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/motor skills.png" alt="Motor Development">
-                <div class="product-info">
-                    <h3>Motor Development</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/motor-development.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Nature and Sensory Processing -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/nature and sensory processing thumbnail.jpg" alt="Nature and Sensory Processing">
-                <div class="product-info">
-                    <h3>Nature and Sensory Processing</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/nature-sensory-processing.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Postural Control -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/postural control.jpg" alt="Postural Control">
-                <div class="product-info">
-                    <h3>Postural Control</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/postural-control.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Pre Writing Skills Learning Booklet -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/prewriting skills booklet.jpg" alt="Pre Writing Skills Learning Booklet">
-                <div class="product-info">
-                    <h3>Pre Writing Skills Learning Booklet</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/pre-writing-skills-booklet.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Pre Writing Skills Guide -->
-            <div class="product-card">
-                <img src="https://www.growinghandsonkids.com/wp-content/uploads/2018/02/prewriting-skills-checklist-collage.png" alt="Pre Writing Skills Guide">
-                <div class="product-info">
-                    <h3>Pre Writing Skills Guide</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/pre-writing-skills-guide.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Primitive Reflexes -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/primitive reflexes thumbnail.jpg" alt="Primitive Reflexes">
-                <div class="product-info">
-                    <h3>Primitive Reflexes</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/primitive-reflexes.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Benefits of Colouring -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/benefits of colouring.jpg" alt="Benefits of Colouring">
-                <div class="product-info">
-                    <h3>Benefits of Colouring</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/benefits-of-colouring.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Safe Riding Guide -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/safe riding guide thumbnail.jpg" alt="Safe Riding Guide">
-                <div class="product-info">
-                    <h3>Safe Riding Guide</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/safe-riding-guide.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Resources for School Readiness -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/resources for school readiness thumbnail.jpg" alt="Resources for School Readiness">
-                <div class="product-info">
-                    <h3>Resources for School Readiness</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/school-readiness-resources.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Sensory Regulation -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/sensory regulation thumbnail.jpg" alt="Sensory Regulation">
-                <div class="product-info">
-                    <h3>Sensory Regulation</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/sensory-regulation.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Sensory Spaces in School -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/sensory regulation thumbnail.jpg" alt="Sensory Spaces in School">
-                <div class="product-info">
-                    <h3>Sensory Spaces in School</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/sensory-spaces-in-school.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Strategies for Developing Good Learners -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/strategies for developing good learners thumbnail.jpg" alt="Strategies for Developing Good Learners">
-                <div class="product-info">
-                    <h3>Strategies for Developing Good Learners</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/strategies-good-learners.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
-            <!-- Ways to Improve Balance -->
-            <div class="product-card">
-                <img src="assets/product-thumbnails/ways to improve balance.jpg" alt="Ways to Improve Balance">
-                <div class="product-info">
-                    <h3>Ways to Improve Balance</h3>
-                    <p class="price">2.50 <span class="currency-symbol">AED</span></p>
-                    <a href="product-specific-pages/ways-improve-balance.html" class="add-to-cart-btn">See More</a>
-                </div>
-            </div>
-
+      <!-- 5 Areas of Attention -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/5 areas of attention thumbnail.jpg" alt="5 Areas of Attention">
+        <div class="product-info">
+          <h3>5 Areas of Attention</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/5-areas-of-attention.html" class="add-to-cart-btn">See More</a>
         </div>
-    </section>
+      </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2025 Occupational Therapy Resource Hub.</p>
-            <div class="footer-links">
-                <a href="contact.html">Privacy Policy</a>
-                <a href="contact.html">Terms of Service</a>
-                <a href="contact.html">Contact</a>
-            </div>
+      <!-- 5 Strategies to Support People with ASD or SPD -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/5 strategies to support people with asd or spd.jpg" alt="5 Strategies to Support People with ASD or SPD">
+        <div class="product-info">
+          <h3>5 Strategies to Support People with ASD or SPD</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/5-strategies-asd-spd.html" class="add-to-cart-btn">See More</a>
         </div>
-    </footer>
+      </div>
 
-    <!-- Floating Cart Button (visible on every page) -->
-    <a href="#" class="snipcart-checkout floating-cart-btn" aria-label="Open cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 4H6"></path>
-        </svg>
-        <span class="snipcart-items-count floating-cart-count"></span>
-    </a>
+      <!-- Anxiety Self Help Tool -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/anxiety self help tool.jpg" alt="Anxiety Self Help Tool">
+        <div class="product-info">
+          <h3>Anxiety Self Help Tool</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/anxiety-self-help-tool.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-    <script>
-        (function(){
-            function showLast(){
-                const raw = localStorage.getItem('lastProduct');
-                if(!raw) return;
-                try{
-                    const p = JSON.parse(raw);
-                    document.getElementById('lp-name').textContent = p.name;
-                    document.getElementById('lp-qty').textContent = p.quantity;
-                    document.getElementById('lp-price').textContent = parseFloat(p.price).toFixed(2) + ' AED';
-                    document.getElementById('lp-total').textContent = (parseFloat(p.price) * parseInt(p.quantity)).toFixed(2) + ' AED';
-                    document.getElementById('last-purchase-banner').style.display = 'block';
-                }catch(e){ console.warn(e) }
-            }
+      <!-- Budgeting Guide -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/simple spending thumbnail.jpg" alt="Budgeting Guide">
+        <div class="product-info">
+          <h3>Budgeting Guide</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/budgeting-guide.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-            document.addEventListener('DOMContentLoaded', showLast);
-            window.addEventListener('storage', showLast);
+      <!-- Cognitive Exercise Program -->
+      <div class="product-card">
+        <img src="https://www.yourtherapysource.com/wp-content/uploads/2019/04/Occupational-Therapy-Activity-Packet-from-YTS-FB.jpg" alt="Cognitive Exercise Program">
+        <div class="product-info">
+          <h3>Cognitive Exercise Program</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/cognitive-exercise-program.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-            // Re-add the last product to the Snipcart cart and open checkout
-            const checkoutBtn = document.getElementById('lp-checkout');
-            if(checkoutBtn){
-                checkoutBtn.addEventListener('click', function(){
-                    const raw = localStorage.getItem('lastProduct'); if(!raw) return;
-                    try{
-                        const p = JSON.parse(raw);
-                        let t = document.getElementById('lp-add-temp');
-                        if(!t){ t = document.createElement('button'); t.id = 'lp-add-temp'; t.className = 'snipcart-add-item'; t.style.display = 'none'; document.body.appendChild(t); }
-                        t.setAttribute('data-item-id', p.id);
-                        t.setAttribute('data-item-name', p.name);
-                        t.setAttribute('data-item-price', p.price);
-                        t.setAttribute('data-item-quantity', p.quantity);
-                        t.setAttribute('data-item-url', '/products.html');
+      <!-- Developing Co-ordination -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/Developing Co-cordination.jpg" alt="Developing Co-ordination">
+        <div class="product-info">
+          <h3>Developing Co-ordination</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/developing-co-ordination.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-                        // trigger add
-                        t.click();
+      <!-- Fine Motor Skills -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/fine motor skills.jpg" alt="Fine Motor Skills">
+        <div class="product-info">
+          <h3>Fine Motor Skills</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/fine-motor-skill.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-                        // wait a little for snipcart to add then open checkout
-                        setTimeout(()=>{ document.querySelector('.snipcart-checkout').click(); }, 700);
-                    }catch(e){ console.warn(e) }
-                });
-            }
-        })();
-    </script>
+      <!-- Games to Boost Executive Functioning Skills -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/games to boost executive functioning thumbnail.jpg" alt="Games to Boost Executive Functioning Skills">
+        <div class="product-info">
+          <h3>Games to Boost Executive Functioning Skills</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/games-executive-functioning.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-    <!-- Currency detection and switching logic -->
-    <script>
-        async function detectAndSetCurrency() {
-          let currency = localStorage.getItem('preferredCurrency');
+      <!-- Hand Dominance -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/hand dominance thumbnail.jpg" alt="Hand Dominance">
+        <div class="product-info">
+          <h3>Hand Dominance</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/hand-dominance.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-          if (!currency) {
-            // No manual choice yet — detect via GeoIP
-            try {
-              const response = await fetch('https://ipapi.co/json/');
-              const data = await response.json();
+      <!-- How to Manage Anxiety -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/how to manage anxiety.jpg" alt="How to Manage Anxiety">
+        <div class="product-info">
+          <h3>How to Manage Anxiety</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/how-to-manage-anxiety.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-              // The API directly gives us the correct currency!
-              if (data.currency === 'AUD') {
-                currency = 'AUD';
-              } else if (data.currency === 'AED') {
-                currency = 'AED';
-              } else {
-                currency = 'AED'; // Default fallback
-              }
-            } catch (error) {
-              console.warn('GeoIP failed, using default AED');
-              currency = 'AED';
-            }
+      <!-- How to Teach Cutting Skills -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/cutting skills thumbnail.jpg" alt="How to Teach Cutting Skills">
+        <div class="product-info">
+          <h3>How to Teach Cutting Skills</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/how-to-teach-cutting-skills.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-            // Save the detected currency for next visits
-            localStorage.setItem('preferredCurrency', currency);
-          }
+      <!-- How to Teach Jumping Skills -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/how to teach jumping skills thumbnail.jpg" alt="How to Teach Jumping Skills">
+        <div class="product-info">
+          <h3>How to Teach Jumping Skills</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/how-to-teach-jumping-skills.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-          // Update all currency symbols on the page
-          document.querySelectorAll('.currency-symbol').forEach(el => {
-            el.textContent = currency;
-          });
+      <!-- Internet Tips -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/internet tips thumbnail.jpg" alt="Internet Tips">
+        <div class="product-info">
+          <h3>Internet Tips</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/internet-tips.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-          // Update the dropdown to match current choice
-          const select = document.getElementById('currency-select');
-          if (select) {
-            select.value = currency;
-          }
+      <!-- Learn to Play -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/learn to play.jpg" alt="Learn to Play">
+        <div class="product-info">
+          <h3>Learn to Play</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/learn-to-play.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
 
-          // Tell Snipcart to use the selected currency
-          if (window.Snipcart) {
-            Snipcart.api.session.setCurrency(currency);
-          }
+      <!-- Motor Development -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/motor skills.png" alt="Motor Development">
+        <div class="product-info">
+          <h3>Motor Development</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/motor-development.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Nature and Sensory Processing -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/nature and sensory processing thumbnail.jpg" alt="Nature and Sensory Processing">
+        <div class="product-info">
+          <h3>Nature and Sensory Processing</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/nature-sensory-processing.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Postural Control -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/postural control.jpg" alt="Postural Control">
+        <div class="product-info">
+          <h3>Postural Control</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/postural-control.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Pre Writing Skills Learning Booklet -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/prewriting skills booklet.jpg" alt="Pre Writing Skills Learning Booklet">
+        <div class="product-info">
+          <h3>Pre Writing Skills Learning Booklet</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/pre-writing-skills-booklet.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Pre Writing Skills Guide -->
+      <div class="product-card">
+        <img src="https://www.growinghandsonkids.com/wp-content/uploads/2018/02/prewriting-skills-checklist-collage.png" alt="Pre Writing Skills Guide">
+        <div class="product-info">
+          <h3>Pre Writing Skills Guide</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/pre-writing-skills-guide.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Primitive Reflexes -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/primitive reflexes thumbnail.jpg" alt="Primitive Reflexes">
+        <div class="product-info">
+          <h3>Primitive Reflexes</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/primitive-reflexes.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Benefits of Colouring -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/benefits of colouring.jpg" alt="Benefits of Colouring">
+        <div class="product-info">
+          <h3>Benefits of Colouring</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/benefits-of-colouring.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Safe Riding Guide -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/safe riding guide thumbnail.jpg" alt="Safe Riding Guide">
+        <div class="product-info">
+          <h3>Safe Riding Guide</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/safe-riding-guide.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Resources for School Readiness -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/resources for school readiness thumbnail.jpg" alt="Resources for School Readiness">
+        <div class="product-info">
+          <h3>Resources for School Readiness</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/school-readiness-resources.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Sensory Regulation -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/sensory regulation thumbnail.jpg" alt="Sensory Regulation">
+        <div class="product-info">
+          <h3>Sensory Regulation</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/sensory-regulation.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Sensory Spaces in School -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/sensory regulation thumbnail.jpg" alt="Sensory Spaces in School">
+        <div class="product-info">
+          <h3>Sensory Spaces in School</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/sensory-places-in-school.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Strategies for Developing Good Learners -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/strategies for developing good learners thumbnail.jpg" alt="Strategies for Developing Good Learners">
+        <div class="product-info">
+          <h3>Strategies for Developing Good Learners</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/strategies-good-learner.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+      <!-- Ways to Improve Balance -->
+      <div class="product-card">
+        <img src="assets/product-thumbnails/ways to improve balance.jpg" alt="Ways to Improve Balance">
+        <div class="product-info">
+          <h3>Ways to Improve Balance</h3>
+          <p class="price">2.50 <span class="currency-symbol"></span></p>
+          <a href="product-specific-pages/ways-improve-balance.html" class="add-to-cart-btn">See More</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Occupational Therapy Resource Hub.</p>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Cart Button -->
+  <a href="#" class="snipcart-checkout floating-cart-btn" aria-label="Open cart">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 4H6"></path>
+    </svg>
+    <span class="snipcart-items-count floating-cart-count"></span>
+  </a>
+
+  <!-- Currency Detection & Update Script -->
+  <script>
+    async function detectAndSetCurrency() {
+      let currency = localStorage.getItem('preferredCurrency');
+
+      if (!currency) {
+        try {
+          const response = await fetch('https://ipapi.co/json/');
+          const data = await response.json();
+          currency = (data.currency === 'AUD') ? 'AUD' : 'AED';
+        } catch (error) {
+          console.warn('GeoIP failed, defaulting to AED');
+          currency = 'AED';
         }
+        localStorage.setItem('preferredCurrency', currency);
+      }
 
-        // Run when page loads
-        window.addEventListener('DOMContentLoaded', detectAndSetCurrency);
+      // Update all visible currency symbols
+      document.querySelectorAll('.currency-symbol').forEach(el => {
+        el.textContent = currency;
+      });
 
-        // Manual currency change via dropdown
-        document.addEventListener('DOMContentLoaded', () => {
-          const select = document.getElementById('currency-select');
-          if (!select) return;
+      // Update Snipcart currency (now and when Snipcart loads)
+      function updateSnipcartCurrency() {
+        if (window.Snipcart) {
+          Snipcart.api.session.setCurrency(currency);
+        }
+      }
+      updateSnipcartCurrency();
+      document.addEventListener('snipcart.ready', updateSnipcartCurrency);
+    }
 
-          select.addEventListener('change', (e) => {
-            const newCurrency = e.target.value;
-            localStorage.setItem('preferredCurrency', newCurrency);
+    window.addEventListener('DOMContentLoaded', detectAndSetCurrency);
 
-            // Update symbols
-            document.querySelectorAll('.currency-symbol').forEach(el => {
-              el.textContent = newCurrency;
-            });
+    // Optional: Manual currency switch (if you add a dropdown later)
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('currency-select');
+      if (!select) return;
 
-            // Update Snipcart currency
-            if (window.Snipcart) {
-              Snipcart.api.session.setCurrency(newCurrency);
-            }
-          });
+      select.addEventListener('change', (e) => {
+        const newCurrency = e.target.value;
+        localStorage.setItem('preferredCurrency', newCurrency);
+        document.querySelectorAll('.currency-symbol').forEach(el => {
+          el.textContent = newCurrency;
         });
-    </script>
-
+        if (window.Snipcart) {
+          Snipcart.api.session.setCurrency(newCurrency);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

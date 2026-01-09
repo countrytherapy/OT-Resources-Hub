@@ -7,17 +7,26 @@
     <link rel="stylesheet" href="../styles.css">
 
 <body>
-  <div id="shared-header"></div>
+    <div id="shared-header"></div>
 
-  <script src="/snipcart-setup.js"></script>
-  <script src="/currency.js"></script>
+    <script>
+        window.SnipcartSettings = {
+                publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+                loadStrategy: 'on-user-interaction',
+                modalStyle: 'side',
+        };
 
-  <script>
-    // Load shared header
-    fetch('/header.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('shared-header').innerHTML = html);
-  </script>
+        (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+    </script>
+
+    <script src="/currency.js"></script>
+
+    <script>
+        // Load shared header
+        fetch('/header.html')
+            .then(r => r.text())
+            .then(html => document.getElementById('shared-header').innerHTML = html);
+    </script>
 
     <main class="product-detail container">
         <section class="carousel" aria-label="Product image carousel" tabindex="0">
@@ -35,7 +44,7 @@
 
         <aside class="product-side">
             <h1>5 Strategies to Support people with ASD or SPD</h1>
-            <p class="price">2.50 AED</p>
+            <p class="price">2.50 <span class="currency-symbol"></span></p>
             <p>A practical resource outlining five effective strategies to support individuals with autism spectrum disorder or sensory processing differences in daily life.</p>
 
             <div style="margin-top:1rem"><strong>Includes:</strong> downloadable PDF, printable activities</div>
@@ -50,10 +59,10 @@
                 <button id="add-to-cart" class="snipcart-add-item add-to-cart" 
                     data-item-id="5-Strategies-to-Support-people-with-ASD-or-SPD"
                     data-item-file-guid="42e2f5e9-f0c6-4dcf-a3b7-0f30a809fa8e"
-                    data-item-name="5 Areas of Attention"
+                    data-item-name="5 Strategies to Support people with ASD or SPD"
                     data-item-price="2.50"
-                    data-item-url="https://www.otresoursehub.com/product-specific-pages/5-Strategies-to-Support-people-with-ASD-or-SPD.html"
-                    data-item-description="Five areas that affect attention with strategies and activities."
+                    data-item-url="https://otresourceshub.com/product-specific-pages/5-strategies-asd-spd.html"
+                    data-item-description="Five strategies to support people with ASD or SPD, with practical tips and activities."
                     data-item-image="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg"
                     data-item-quantity="1"
                 >Add to cart</button>
@@ -61,7 +70,7 @@
                 <button id="continue-shopping" class="btn-continue">Continue shopping</button>
             </div>
 
-            <p style="margin-top:1rem;color:#6D4C41;font-size:0.95rem">Projected cost: <strong id="projected">2.50 AED</strong></p>
+            <p style="margin-top:1rem;color:#6D4C41;font-size:0.95rem">Projected cost: <strong id="projected">2.50 <span class="currency-symbol"></span></strong></p>
         </aside>
     </main>
     <footer>
@@ -154,16 +163,39 @@
         qtyInput.addEventListener('input', ()=>{ if(qtyInput.value < 1) qtyInput.value = 1; updateProjected(); });
 
         function getPrice(){ return parseFloat(2.50); }
-        function updateProjected(){ document.getElementById('projected').textContent = (getPrice()*parseInt(qtyInput.value)).toFixed(2) + ' AED'; }
+        function updateProjected(){
+            const total = (getPrice()*parseInt(qtyInput.value || 1)).toFixed(2);
+            document.getElementById('projected').innerHTML = total + ' <span class="currency-symbol"></span>';
+        }
         updateProjected();
 
         // Before adding to cart make sure Snipcart gets the right quantity and store a short summary to localStorage
         const addBtn = document.getElementById('add-to-cart');
-        addBtn.addEventListener('click', (e)=>{
+        addBtn.addEventListener('click', function handleAdd(e){
             const q = parseInt(qtyInput.value || 1);
             addBtn.setAttribute('data-item-quantity', q);
             // store last product for "continue shopping" behaviour and site summary
             localStorage.setItem('lastProduct', JSON.stringify({ id: addBtn.dataset.itemId, name: addBtn.dataset.itemName, price: addBtn.dataset.itemPrice, quantity: q }));
+
+            // If Snipcart is already loaded let it handle the click normally
+            if (window.Snipcart) return;
+
+            // Prevent the default action while we load Snipcart, then re-dispatch click once ready
+            e.preventDefault();
+            if (this.dataset.sncProcessing === '1') return;
+            this.dataset.sncProcessing = '1';
+            if (typeof window.LoadSnipcart === 'function') window.LoadSnipcart();
+
+            const tryOpen = () => {
+                if (window.Snipcart) {
+                    delete this.dataset.sncProcessing;
+                    // Re-dispatch a synthetic click so Snipcart's handler runs (our handler will early return)
+                    this.click();
+                } else {
+                    setTimeout(tryOpen, 200);
+                }
+            };
+            setTimeout(tryOpen, 200);
         });
 
         // Continue shopping: store, then redirect back to products

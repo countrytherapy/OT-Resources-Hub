@@ -9,7 +9,16 @@
 <body>
   <div id="shared-header"></div>
 
-  <script src="/snipcart-setup.js"></script>
+  <script>
+    window.SnipcartSettings = {
+        publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+        loadStrategy: 'on-user-interaction',
+        modalStyle: 'side',
+    };
+
+    (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+  </script>
+
   <script src="/currency.js"></script>
 
   <script>
@@ -35,7 +44,7 @@
 
         <aside class="product-side">
             <h1>Motor Development Guide</h1>
-            <p class="price">2.50 AED</p>
+              <p class="price">2.50 <span class="currency-symbol"></span></p>
             <p>An overview of motor development milestones with strategies to support gross and fine motor skill growth.</p>
 
             <div style="margin-top:1rem"><strong>Includes:</strong> downloadable PDF, printable activities</div>
@@ -61,7 +70,7 @@
                 <button id="continue-shopping" class="btn-continue">Continue shopping</button>
             </div>
 
-            <p style="margin-top:1rem;color:#6D4C41;font-size:0.95rem">Projected cost: <strong id="projected">2.50 AED</strong></p>
+            <p style="margin-top:1rem;color:#6D4C41;font-size:0.95rem">Projected cost: <strong id="projected">2.50 <span class="currency-symbol"></span></strong></p>
         </aside>
     </main>
     <footer>
@@ -154,7 +163,7 @@
         qtyInput.addEventListener('input', ()=>{ if(qtyInput.value < 1) qtyInput.value = 1; updateProjected(); });
 
         function getPrice(){ return parseFloat(2.50); }
-        function updateProjected(){ document.getElementById('projected').textContent = (getPrice()*parseInt(qtyInput.value)).toFixed(2) + ' AED'; }
+        function updateProjected(){ document.getElementById('projected').innerHTML = (getPrice()*parseInt(qtyInput.value)).toFixed(2) + ' <span class="currency-symbol"></span>'; }
         updateProjected();
 
         // Before adding to cart make sure Snipcart gets the right quantity and store a short summary to localStorage
