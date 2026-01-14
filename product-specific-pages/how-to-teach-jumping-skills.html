@@ -7,33 +7,155 @@
     <title>How to Teach Jumping Skills — OT Resource Hub</title>
     <link rel="stylesheet" href="../styles.css">
 
+    <style>
+        /* Page-specific responsive tweaks for product detail */
+        main.product-detail.container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: start;
+            padding: 2.5rem;
+            box-sizing: border-box;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #FFEBDB;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .product-side h1 { margin-top: 0; }
+
+        .qty-controls { display: flex; gap: 0.5rem; align-items: center; margin-top: 1.2rem; }
+        .qty-controls input { width: 64px; text-align: center; }
+
+        .actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .actions .add-to-cart { flex: 1 1 auto; }
+        .actions .btn-continue { flex: 1 1 auto; }
+
+        /* Currency switcher styling */
+        .currency-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #4A3C35;
+            margin: 1rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .currency-switcher label {
+            white-space: nowrap;
+        }
+
+        .currency-switcher select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #FFEBDB;
+            border-radius: 8px;
+            background: white;
+            font-size: 0.95rem;
+            color: #4A3C35;
+            cursor: pointer;
+            min-width: 160px;
+            transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234A3C35' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 0.65rem;
+        }
+
+        .currency-switcher select:focus {
+            outline: none;
+            border-color: #FFB07C;
+            box-shadow: 0 0 0 3px rgba(255, 176, 124, 0.2);
+        }
+
+        .currency-switcher select:invalid,
+        .currency-switcher select option[disabled] {
+            color: #999;
+        }
+
+        @media (max-width: 900px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+                padding: 1.8rem;
+                gap: 2.5rem;
+            }
+            .product-side { order: 2; }
+            .carousel { order: 1; }
+            .actions { flex-direction: column; gap: 0.8rem; }
+            .actions .add-to-cart,
+            .actions .btn-continue { width: 100%; }
+            main.product-detail.container,
+            .currency-switcher {
+                margin: 1rem;
+            }
+            .currency-switcher {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
 <body>
     <div id="shared-header"></div>
 
-    <script>
-        window.SnipcartSettings = {
-                publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
-                loadStrategy: 'on-user-interaction',
-                modalStyle: 'side',
-        };
-
-        (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
-    </script>
+    <!-- Manual currency dropdown -->
+    <div class="currency-switcher">
+        <label for="currency-select">Currency:</label>
+        <select id="currency-select" required>
+            <option value="" disabled selected>Loading currencies...</option>
+        </select>
+    </div>
 
     <script src="/currency.js"></script>
 
     <script>
-        // Load shared header
+        window.SnipcartSettings = {
+            publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+            loadStrategy: 'on-user-interaction',
+            modalStyle: 'side',
+        };
+
+        // Snipcart loader
+        (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`script[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+
+        // Load header + init currency
         fetch('/header.html')
             .then(r => r.text())
-            .then(html => document.getElementById('shared-header').innerHTML = html);
+            .then(html => {
+                document.getElementById('shared-header').innerHTML = html;
+                if (typeof window.initCurrency === 'function') {
+                    window.initCurrency();
+                } else {
+                    console.warn('currency.js not ready – retrying in 1s');
+                    setTimeout(() => {
+                        if (typeof window.initCurrency === 'function') window.initCurrency();
+                    }, 1000);
+                }
+            })
+            .catch(err => console.error('Header load failed:', err));
     </script>
 
     <main class="product-detail container">
         <section class="carousel" aria-label="Product image carousel" tabindex="0">
             <div class="carousel-track" id="carousel-track">
                 <div class="carousel-slide" data-index="0">
-                    <img src="../assets/product-thumbnails/how to teach jumping skills thumbnail.jpg" alt="5 Areas of Attention preview 1">
+                    <img src="../assets/product-thumbnails/how to teach jumping skills thumbnail.jpg" alt="How to Teach Jumping Skills guide illustration">
                 </div>
             </div>
 
@@ -62,8 +184,8 @@
                     data-item-file-guid="42e2f5e9-f0c6-4dcf-a3b7-0f30a809fa8e"
                     data-item-name="How to Teach Jumping Skills"
                     data-item-price="2.50"
-                    data-item-url="https://www.otresoursehub.com/product-specific-pages/5-areas-of-attention.html"
-                    data-item-description="Five areas that affect attention with strategies and activities."
+                    data-item-url="https://otresourceshub.com/product-specific-pages/how-to-teach-jumping-skills.html"
+                    data-item-description="Simple guide outlining developmental stages and activities to help children learn and refine jumping skills."
                     data-item-image="https://www.developmentaltherapy.com/wp-content/uploads/2022/05/Sensory-Integration-Guide.jpg"
                     data-item-quantity="1"
                 >Add to cart</button>
@@ -71,21 +193,25 @@
                 <button id="continue-shopping" class="btn-continue">Continue shopping</button>
             </div>
 
-            <p style="margin-top:1rem;color:#6D4C41;font-size:0.95rem">Projected cost: <strong id="projected">2.50 <span class="currency-symbol"></span></strong></p>
+            <p style="margin-top:1.2rem; color:#6D4C41; font-size:0.95rem">
+                Projected cost: <strong id="projected">2.50 <span class="currency-symbol"></span></strong>
+            </p>
         </aside>
     </main>
+
     <footer>
         <div class="footer-content">
             <p>© 2025 Occupational Therapy Resource Hub. All rights reserved.</p>
             <ul class="footer-links">
                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 <li><a href="terms_of_service.html">Terms of Service</a></li>
-                
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </div>
     </footer>
+
     <script>
-        // Lightweight accessible carousel with autoplay, arrows, dots and swipe
+        // Carousel script (your version)
         (function(){
             const track = document.getElementById('carousel-track');
             const slides = Array.from(track.querySelectorAll('.carousel-slide'));
@@ -136,56 +262,111 @@
                 }catch(e){/* ignore */}
             }
 
-            // touch swipe
             carouselEl.addEventListener('touchstart', (e)=>{ startX = e.changedTouches[0].clientX; stopAuto(); });
             carouselEl.addEventListener('touchend', (e)=>{
                 if(startX==null) return; const dx = e.changedTouches[0].clientX - startX; if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); }
                 startX = null; startAuto();
             });
 
-            // mouse pause/resume
             carouselEl.addEventListener('mouseenter', stopAuto);
             carouselEl.addEventListener('mouseleave', startAuto);
 
-            // keyboard
             carouselEl.addEventListener('keydown', (e)=>{ if(e.key === 'ArrowLeft') prev(); if(e.key === 'ArrowRight') next(); });
 
             prevBtn.addEventListener('click', ()=>{ prev(); });
             nextBtn.addEventListener('click', ()=>{ next(); });
 
-            // init
             createDots(); updateDots(); goTo(0); startAuto();
         })();
 
-        // Quantity controls
+        // Quantity + projected + currency-aware logic
         const qtyInput = document.getElementById('qty-input');
-        document.getElementById('qty-increase').addEventListener('click', ()=>{ qtyInput.value = parseInt(qtyInput.value || 1) + 1; updateProjected(); });
-        document.getElementById('qty-decrease').addEventListener('click', ()=>{ qtyInput.value = Math.max(1, parseInt(qtyInput.value || 1) - 1); updateProjected(); });
-        qtyInput.addEventListener('input', ()=>{ if(qtyInput.value < 1) qtyInput.value = 1; updateProjected(); });
-
-        function getPrice(){ return parseFloat(2.50); }
-        function updateProjected(){
-            const total = (getPrice()*parseInt(qtyInput.value || 1)).toFixed(2);
-            document.getElementById('projected').innerHTML = total + ' <span class="currency-symbol"></span>';
-        }
-        updateProjected();
-
-        // Before adding to cart make sure Snipcart gets the right quantity and store a short summary to localStorage
+        const projected = document.getElementById('projected');
         const addBtn = document.getElementById('add-to-cart');
-        addBtn.addEventListener('click', (e)=>{
+
+        window.getCurrentPrice = () => 2.50;  // fallback until currency.js overrides
+
+        function updateProjected() {
+            if (!qtyInput || !projected) return;
+            const qty = parseInt(qtyInput.value || 1);
+            const price = window.getCurrentPrice ? window.getCurrentPrice() : 2.50;
+            const total = (price * qty).toFixed(2);
+            projected.innerHTML = total + ' <span class="currency-symbol"></span>';
+        }
+
+        function updateSnipcartQuantity() {
+            if (!addBtn) return;
+            const qty = parseInt(qtyInput.value || 1);
+            addBtn.setAttribute('data-item-quantity', qty);
+        }
+
+        updateProjected();
+        updateSnipcartQuantity();
+
+        document.getElementById('qty-increase')?.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value || 1) + 1;
+            updateProjected();
+            updateSnipcartQuantity();
+            if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+                window.applyCurrency(localStorage.getItem('preferredCurrency'));
+            }
+        });
+
+        document.getElementById('qty-decrease')?.addEventListener('click', () => {
+            qtyInput.value = Math.max(1, parseInt(qtyInput.value || 1) - 1);
+            updateProjected();
+            updateSnipcartQuantity();
+            if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+                window.applyCurrency(localStorage.getItem('preferredCurrency'));
+            }
+        });
+
+        qtyInput?.addEventListener('input', () => {
+            if (qtyInput.value < 1) qtyInput.value = 1;
+            updateProjected();
+            updateSnipcartQuantity();
+            if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+                window.applyCurrency(localStorage.getItem('preferredCurrency'));
+            }
+        });
+
+        // Add to cart – ensure quantity is set
+        addBtn?.addEventListener('click', () => {
             const q = parseInt(qtyInput.value || 1);
             addBtn.setAttribute('data-item-quantity', q);
-            // store last product for "continue shopping" behaviour and site summary
-            localStorage.setItem('lastProduct', JSON.stringify({ id: addBtn.dataset.itemId, name: addBtn.dataset.itemName, price: addBtn.dataset.itemPrice, quantity: q }));
+            localStorage.setItem('lastProduct', JSON.stringify({
+                id: addBtn.dataset.itemId,
+                name: addBtn.dataset.itemName,
+                price: addBtn.dataset.itemPrice,
+                quantity: q
+            }));
         });
 
-        // Continue shopping: store, then redirect back to products
-        document.getElementById('continue-shopping').addEventListener('click', ()=>{
-            const q = parseInt(qtyInput.value || 1);
-            localStorage.setItem('lastProduct', JSON.stringify({ id: addBtn.dataset.itemId, name: addBtn.dataset.itemName, price: addBtn.dataset.itemPrice, quantity: q }));
+        // Continue shopping
+        document.getElementById('continue-shopping')?.addEventListener('click', () => {
+            const qty = parseInt(qtyInput.value || 1);
+            localStorage.setItem('lastProduct', JSON.stringify({
+                id: addBtn.dataset.itemId,
+                name: addBtn.dataset.itemName,
+                price: addBtn.dataset.itemPrice,
+                quantity: qty
+            }));
             window.location.href = '/products.html';
         });
-    </script>
 
+        // Safety re-apply + force dropdown population
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+                    window.applyCurrency(localStorage.getItem('preferredCurrency'));
+                }
+                const select = document.getElementById('currency-select');
+                if (select && select.options.length <= 1 && typeof window.populateDropdown === 'function') {
+                    window.populateDropdown();
+                    console.log('Forced dropdown population');
+                }
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
