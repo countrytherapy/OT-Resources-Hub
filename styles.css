@@ -468,6 +468,15 @@ header {
     .hero-image img { max-width: 320px; }
 }
 
+/* Hide the details summary so 'Quick Links' label does not show on desktop
+   and keep the footer links visible as before. On small screens keep links inline. */
+.footer-details > summary { display: none; }
+
+@media (max-width: 768px) {
+    .footer-details > summary { display: none; }
+    .footer-links { flex-wrap: nowrap; gap: 1rem; justify-content: center; }
+    .footer-links li { display: inline-block; }
+}
 /* ==================== 5. FEATURES SECTION ==================== */
 .features {
     text-align: center;
