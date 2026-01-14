@@ -1448,7 +1448,9 @@ footer::after {
 /* LEFT: Have a question? – perfect height match */
 .contact-split-text {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.6rem;
+    align-items: stretch;
 }
 
 .contact-hero-mini {
@@ -1558,6 +1560,22 @@ footer::after {
 .social-gradient-card h1 {
     font-size: 2.8rem;
     color: var(--deep-brown);
+    margin-bottom: 0.8rem;
+}
+
+/* Compact variant when placed inside the contact column */
+.social-gradient-card--compact {
+    padding: 1.6rem 1.4rem;
+    border-radius: 20px;
+    box-shadow: 0 14px 36px rgba(139,111,71,0.12);
+}
+
+.social-gradient-card--compact h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+}
+.social-gradient-card--compact p {
+    font-size: 0.98rem;
     margin-bottom: 0.8rem;
 }
 
