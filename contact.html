@@ -1,99 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="../assets/Logo.png" type="image/png">
+    <link rel="icon" href="assets/Logo.png" type="image/png">
     <meta charset="UTF-8">
-        <link rel="icon" href="assets/Logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | OT Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+        <style>
+            /* Contact form mobile tweaks to complement site-wide auth styles */
+            @media (max-width: 768px) {
+                .auth-page { padding: 1rem; }
+                .auth-card { padding: 2rem; max-width: 520px; margin: 1.5rem auto; border-radius: 20px; position: relative; }
+                .auth-card h1 { font-size: 2rem; }
+                .auth-card p { font-size: 1rem; }
+                .auth-form .form-group { margin-bottom: 1rem; }
+                .auth-form input, .auth-form textarea { padding: 0.85rem 1rem; font-size: 0.95rem; }
+                .auth-form label { font-size: 0.9rem; }
+                .btn-primary { padding: 0.9rem 1.2rem; font-size: 0.95rem; }
+                /* place back link at top-left of the card */
+                .auth-card .back-link { position: absolute; top: 1rem; left: 1rem; margin: 0; display: inline-flex; }
+            }
+
+            @media (max-width: 420px) {
+                .auth-card { padding: 1.25rem; border-radius: 16px; }
+                .auth-card h1 { font-size: 1.6rem; }
+                .auth-form textarea { min-height: 120px; }
+                .auth-form input, .auth-form textarea { font-size: 0.92rem; }
+            }
+
+            /* Ensure placeholders and input text sizes match the message placeholder */
+            .auth-form input,
+            .auth-form textarea {
+                font-size: 0.95rem;
+                color: #5D4037;
+            }
+
+            .auth-form input::placeholder,
+            .auth-form textarea::placeholder {
+                font-size: 0.95rem;
+                color: rgba(93,64,55,0.45); /* match index form muted text */
+                opacity: 1;
+            }
+        </style>
 </head>
 <body>
 
     <header>
         <nav class="navbar">
+            <!-- Logo + Text (always visible) -->
             <div class="logo">
                 <a href="index.html" class="logo-link">
                     <img src="assets/Logo.png" alt="OT Resource Hub Logo" class="logo-img">
                     <span class="logo-text">OT Resource Hub</span>
                 </a>
             </div>
-            <ul class="nav-links">
+
+            <!-- Desktop nav links – visible on large screens -->
+            <ul class="nav-links desktop-nav">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="resource.html">Resources</a></li>
-                <li><a href="products.html">Shop</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="products.html">Products</a></li>
                 <li><a href="learning.html">Learning</a></li>
+                <li><a href="user_templates/login.html">Login</a></li>
                 <li><a href="contact.html">Contact</a></li>
-            <header>
-                <nav class="navbar">
-                    <!-- Logo + Text (always visible) -->
-                    <div class="logo">
-                        <a href="index.html" class="logo-link">
-                            <img src="assets/Logo.png" 
-                                alt="OT Resource Hub Logo" 
-                                class="logo-img">
-                            <span class="logo-text">OT Resource Hub</span>
-                        </a>
-                    </div>
+            </ul>
 
-                    <!-- Desktop nav links – visible on large screens -->
-                    <ul class="nav-links desktop-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <li><a href="learning.html">Learning</a></li>
-                        <li><a href="user_templates/login.html">Login</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
+            <!-- Mobile hamburger (only on small screens) -->
+            <label for="nav-toggle" class="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-                    <!-- Mobile hamburger (only on small screens) -->
-                    <label for="nav-toggle" class="hamburger-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
+            <!-- Hidden toggle input -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
 
-                    <!-- Hidden toggle input -->
-                    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <!-- Mobile side menu – slides from RIGHT -->
+            <div class="mobile-side-nav">
+                <!-- Close (X) button -->
+                <label for="nav-toggle" class="close-btn">×</label>
 
-                    <!-- Mobile side menu – slides from RIGHT -->
-                    <div class="mobile-side-nav">
-                        <!-- Close (X) button -->
-                        <label for="nav-toggle" class="close-btn">×</label>
+                <ul class="nav-links mobile-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="learning.html">Learning</a></li>
+                    <li><a href="user_templates/login.html">Login</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-                        <ul class="nav-links mobile-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="resources.html">Resources</a></li>
-                            <li><a href="products.html">Shop</a></li>
-                            <li><a href="learning.html">Learning</a></li>
-                            <li><a href="user_templates/login.html">Login</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <input type="hidden" name="_captcha" value="false">
+        <div class="auth-page">
+            <div class="auth-card">
+        <a href="index.html" class="back-link">← Back</a>
+
+        <h1>Contact Us</h1>
+        <p>Have a question? Send us a message and we'll get back to you soon.</p>
+
+        <form action="https://formsubmit.co/otresoursehub@gmail.com" method="POST" class="auth-form contact-form">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_subject" value="Contact form submission">
             <input type="hidden" name="_next" value="./thank-you.html">
+            <input type="hidden" name="_captcha" value="false">
 
             <div class="form-group">
                 <label>Your Name</label>
                 <input type="text" name="name" required placeholder="Enter Your Full Name">
             </div>
-            
+
             <div class="form-group">
                 <label>Your Email</label>
                 <input type="email" name="email" required placeholder="name@example.com">
             </div>
-            
+
             <div class="form-group">
                 <label>Your Message</label>
                 <textarea name="message" rows="6" required placeholder="Hi there! I'd love to know more about..."></textarea>
             </div>
-            
-            <button type="submit" class="submit-btn">Send Message</button>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
-    </div>
+            </div>
+        </div>
 
     <footer>
         <div class="footer-content">
@@ -101,7 +132,6 @@
             <ul class="footer-links">
                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 <li><a href="terms_of_service.html">Terms of Service</a></li>
-                
             </ul>
         </div>
     </footer>
