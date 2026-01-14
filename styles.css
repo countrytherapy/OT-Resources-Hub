@@ -1600,15 +1600,23 @@ footer::after {
     }
 }
 
-/* Mobile – perfect size */
+/* Mobile – adjust sizing so the card doesn't feel cramped */
 @media (max-width: 768px) {
-    .social-icons {
-        gap: 1.6rem;
-    }
-    .social-icon {
-        width: 68px;
-        height: 68px;
-    }
+    .homepage-social-single { padding: 3rem 1rem 4rem; }
+    .social-gradient-card { padding: 2rem 1.5rem; max-width: 720px; }
+    .social-gradient-card h1 { font-size: 2rem; }
+    .social-gradient-card p { font-size: 1rem; max-width: 520px; margin-bottom: 1.6rem; }
+    .social-icons { gap: 1.4rem; }
+    .social-icon { width: 64px; height: 64px; }
+}
+
+@media (max-width: 480px) {
+    .homepage-social-single { padding: 2rem 0 3rem; }
+    .social-gradient-card { padding: 1.2rem 1rem; border-radius: 24px; }
+    .social-gradient-card h1 { font-size: 1.6rem; }
+    .social-gradient-card p { font-size: 0.95rem; max-width: 100%; margin-bottom: 1.2rem; }
+    .social-icons { gap: 1rem; }
+    .social-icon { width: 56px; height: 56px; }
 }
 /* ===================================================== */
 /*          LEARNING PAGE SPECIFIC STYLES                */
