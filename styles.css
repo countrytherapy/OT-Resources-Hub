@@ -665,6 +665,9 @@ header {
     box-shadow: 0 12px 35px rgba(139, 111, 71, 0.12);
     transition: all 0.4s ease;
     border: 1px solid #FFDAC1;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 300px;
 }
 
 .product-card:hover {
@@ -682,6 +685,7 @@ header {
     font-size: 1.4rem;
     margin: 1.2rem 0 0.6rem;
     color: var(--deep-brown);
+    min-height: 3rem;
 }
 
 .product-card p {
@@ -700,6 +704,7 @@ header {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.4s ease;
+    margin-top: auto;
 }
 
 .add-to-cart:hover {
