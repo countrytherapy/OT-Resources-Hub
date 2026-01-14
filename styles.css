@@ -97,7 +97,7 @@ header {
     height: 56px;
     width: auto;
     max-width: 160px;
-    margin-right: 14px;
+    margin-right: 12px;
     object-fit: contain;
 }
 
@@ -141,7 +141,203 @@ header {
 .nav-links li a:hover::after {
     width: 100%;
 }
+/* ============================================
+   RESPONSIVE NAV FOR MOBILE DEVICES
+   ============================================ */
 
+/* Desktop nav – always visible on larger screens */
+.desktop-nav {
+  display: flex;
+  gap: 2.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hide mobile-only elements by default */
+.hamburger-btn,
+.mobile-side-nav,
+.nav-toggle,
+.close-btn {
+  display: none;
+}
+
+/* Hamburger */
+.hamburger-btn {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 34px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.hamburger-btn span {
+  width: 100%;
+  height: 3.5px;
+  background-color: var(--deep-brown);
+  border-radius: 2px;
+  transition: all 0.35s ease;
+}
+
+/* Right-side drawer */
+.mobile-side-nav {
+  position: fixed !important;
+  inset: 0  -80% 0 auto;     /* top right bottom left → hidden to right */
+  width: 80%;                /* wider on very small phones if needed – feels better */
+  max-width: 320px;          /* don't let it get too wide even on bigger phones */
+  height: 100vh;
+  background-color: white;
+  box-shadow: -8px 0 35px rgba(0,0,0,0.18);
+  transition: inset 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1001;             /* higher than header */
+  padding: 4.5rem 1.6rem 2rem;
+  overflow-y: auto;
+}
+
+.nav-toggle:checked ~ .mobile-side-nav {
+  inset: 0 0 0 auto;         /* slide in from right */
+}
+
+/* Close X – make sure it's visible and clickable */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--deep-brown);
+  cursor: pointer;
+  font-weight: 300;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  z-index: 1002;
+  display: block !important;  /* force visibility */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: var(--terracotta);
+}
+
+/* Hamburger → X */
+.nav-toggle:checked + .hamburger-btn span:nth-child(1) {
+  transform: rotate(45deg) translate(9px, 9px);
+}
+.nav-toggle:checked + .hamburger-btn span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle:checked + .hamburger-btn span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Mobile nav links styling */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.mobile-nav li a {
+  font-size: 1.35rem;
+  padding: 0.8rem 0;
+  display: block;
+  color: var(--warm-brown);
+  font-weight: 500;
+}
+
+.mobile-nav li a:hover {
+  color: var(--terracotta);
+}
+
+/* ──────────────────────────────────────────────
+   MEDIA QUERY – MOBILE ONLY
+   ────────────────────────────────────────────── */
+@media (max-width: 850px) {
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .hamburger-btn {
+    display: flex !important;
+  }
+
+  .mobile-side-nav,
+  .close-btn {
+    display: block !important;
+  }
+
+  .navbar {
+    padding: 0.9rem 1.1rem;
+    justify-content: flex-start;          /* ← changed: don't stretch to edges */
+    align-items: center;
+    flex-wrap: nowrap !important;
+    gap: 1.2rem;                          /* controls space between logo and hamburger */
+  }
+
+  .logo {
+    flex: 0 0 auto;                       /* only take needed space */
+    margin-right: auto !important;        /* still pushes hamburger right, but smarter */
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;                          /* space between image and text */
+    white-space: nowrap;
+  }
+
+  /* Base mobile sizes */
+  .logo-img {
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  .logo-text {
+    font-size: 1.38rem;
+  }
+
+  .hamburger-btn {
+    width: 28px;
+    height: 20px;
+    flex: 0 0 auto;
+    margin-left: auto;                    /* ← pulls it firmly to the right */
+  }
+
+  .hamburger-btn span {
+    height: 3px;
+  }
+
+  /* Very narrow phones – tighter layout */
+  @media (max-width: 400px) {
+    .navbar {
+      padding: 0.8rem 1rem;
+      gap: 0.8rem;                        /* even smaller gap here */
+    }
+
+    .logo-img {
+      height: 38px;
+      margin-right: 7px;
+    }
+
+    .logo-text {
+      font-size: 1.32rem;
+    }
+
+    .hamburger-btn {
+      width: 26px;
+      height: 19px;
+    }
+
+    .hamburger-btn span {
+      height: 2.8px;
+    }
+  }
+}
 /* ==================== 4. HERO SECTION ==================== */
 .hero {
     display: flex;
