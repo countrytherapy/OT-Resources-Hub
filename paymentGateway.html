@@ -21,6 +21,7 @@
       font-size: 3rem;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
+      color: white;
     }
 
     .payment-hero p {
@@ -160,8 +161,12 @@
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr); /* always two columns */
       gap: 2rem;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .feature-item {
@@ -318,8 +323,15 @@
         padding: 2rem;
       }
 
+      /* keep two columns on small screens as requested */
       .features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      /* tighten padding to avoid right shift on narrow screens */
+      .features-list {
+        padding: 1.25rem;
       }
     }
   </style>
@@ -509,7 +521,6 @@
       <ul class="footer-links">
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="terms_of_service.html">Terms of Service</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
   </footer>
