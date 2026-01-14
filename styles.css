@@ -2159,6 +2159,48 @@ body {
   height: 100%;
 }
 
+/* Compact form for smaller screens */
+@media (max-width: 992px) {
+    .seo-contact .contact-split-form {
+        padding: 1.2rem;
+        border-radius: 18px;
+    }
+
+    .seo-contact .contact-split-form input,
+    .seo-contact .contact-split-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .seo-contact .contact-split-form textarea {
+        min-height: 90px !important;
+        max-height: 140px;
+    }
+
+    .seo-contact .contact-split-form .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .seo-contact .contact-split-form .submit-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Extra small screens: hide image and tighten form text; increase button vertical size for better touch targets */
+@media (max-width: 480px) {
+    .seo-contact .contact-text-image { display: none !important; }
+
+    .seo-contact .contact-split-form input,
+    .seo-contact .contact-split-form textarea {
+        font-size: 0.85rem;
+    }
+
+    .seo-contact .contact-split-form .submit-btn {
+        padding: 1.2rem 1rem; /* taller button */
+        font-size: 1rem;
+    }
+}
+
 .seo-contact .contact-split-right {
   display: flex;
   flex-direction: column;
@@ -2191,7 +2233,10 @@ body {
 /* Responsive */
 @media (max-width: 992px) {
   .seo-contact .contact-split-grid {
-    grid-template-columns: 1fr;
+        /* Stack into a single column and show the descriptive text (right column) first */
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse; /* puts right column (text) above the form */
   }
 
   .seo-contact .contact-split-right {
@@ -2201,6 +2246,11 @@ body {
   .seo-contact .contact-text-image {
     height: 300px;
   }
+
+    /* Hide the decorative image on narrower screens to prioritise text and form */
+    @media (max-width: 768px) {
+        .seo-contact .contact-text-image { display: none; }
+    }
 }
 .contact-hero-mini p {
     margin-bottom: 1.5rem; /* adjust the spacing */
