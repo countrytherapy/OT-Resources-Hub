@@ -196,10 +196,13 @@
     <!-- Lock Overlay - appears only when scrolling into blurred area (for non-logged-in users) -->
     <div id="login-overlay" class="login-overlay">
       <div class="lock-icon">🔒</div>
-      <h2>Log In to View Full Resources</h2>
-      <p>Sign in to access all videos, guides, and exclusive content.</p>
-      <a href="user_templates/login.html" class="btn btn-primary">Log In Now</a>
-      <br><br>
+      <h2>Access Full Resources</h2>
+      <p>Sign in to access free content, or unlock all premium resources and courses.</p>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+        <a href="paymentGateway.html" class="btn btn-primary">Unlock Resources</a>
+        <a href="user_templates/login.html" class="btn btn-secondary">Log In</a>
+      </div>
+      <br>
       <small>New here? <a href="user_templates/register.html">Create a free account</a></small>
     </div>
 
@@ -245,9 +248,6 @@
         }
       });
     </script>
-
-    <!-- Auth Guard: Ensure user is logged in and has paid -->
-    <script type="module" src="auth-guard.js"></script>
 
     <!-- Payment Handler: Handle Snipcart payment completion -->
     <script type="module" src="payment-handler.js"></script>

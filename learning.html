@@ -245,17 +245,15 @@
       }
     });
 
-    // Show modal when clicking any course button (with class course-btn)
+    // Redirect to payment gateway when clicking any course button (unlock flow)
     document.querySelectorAll('.course-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        modal.classList.add('visible');
+        // Send user to payment gateway to unlock the course
+        window.location.href = 'paymentGateway.html';
       });
     });
   </script>
-
-  <!-- Auth Guard: Ensure user is logged in and has paid -->
-  <script type="module" src="auth-guard.js"></script>
 
   <!-- Payment Handler: Handle Snipcart payment completion -->
   <script type="module" src="payment-handler.js"></script>
