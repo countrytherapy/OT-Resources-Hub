@@ -80,7 +80,7 @@
         message.textContent = 'Success! Taking you home...';
         message.style.color = 'green';
         setTimeout(() => {
-          window.location.href = '../index.html';  // Go to homepage
+          window.location.href = '../dashboard.html';  // Go to dashboard
         }, 1500);
       }
     });
@@ -91,7 +91,7 @@
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin + '/index.html'  // After login, go home
+          redirectTo: window.location.origin + '/dashboard.html' 
         }
       });
 

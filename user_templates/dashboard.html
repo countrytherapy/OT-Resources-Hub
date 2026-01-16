@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- your existing head stuff -->
+  <title>My Account – OT Resource Hub</title>
+</head>
+<body>
+
+  <header>
+    <!-- your navbar, add a "Dashboard" link if logged in -->
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Your Dashboard</h1>
+    <p id="greeting">Loading...</p>
+  </section>
+
+  <div class="container">
+    <div id="premium-content" style="display: none;">
+      <h2>Your Premium Access</h2>
+      <p>Here are your exclusive videos and resources:</p>
+      <!-- embed videos, links to PDFs, etc. -->
+      <div class="video-grid">
+        <video controls src="videos/therapy-demo.mp4"></video>
+        <!-- more content -->
+      </div>
+      <a href="resources.html">Go to Full Resource Library</a>
+    </div>
+
+    <div id="no-premium" style="display: none;">
+      <h2>Unlock Premium Access</h2>
+      <p>Get videos, guides, and monthly updates for just $5/month or $9 for 30 days.</p>
+      <a href="paymentGateway.html">Choose a Plan</a>
+    </div>
+  </div>
+
+  <button id="logout">Log Out</button>
+
+  <!-- your existing Snipcart script -->
+
+  <script>
+    // Check login first
+    const currentUser = localStorage.getItem('loggedInUser'); // assuming you store email or username here on login
+    if (!currentUser) {
+      window.location.href = 'login.html'; // or wherever your login is
+    }
+
+    document.getElementById('greeting').textContent = `Hello, ${currentUser}!`;
+
+    // Check premium status
+    function checkPremiumAccess() {
+      const premiumData = JSON.parse(localStorage.getItem('premiumAccess') || '{}');
+      const now = Date.now();
+
+      if (premiumData.user === currentUser && premiumData.active) {
+        if (premiumData.type === 'monthly' || (premiumData.type === 'onetime' && premiumData.expires > now)) {
+          document.getElementById('premium-content').style.display = 'block';
+          document.getElementById('no-premium').style.display = 'none';
+          return;
+        }
+      }
+      document.getElementById('premium-content').style.display = 'none';
+      document.getElementById('no-premium').style.display = 'block';
+    }
+
+    checkPremiumAccess();
+
+    // Logout
+    document.getElementById('logout').addEventListener('click', () => {
+      localStorage.removeItem('loggedInUser');
+      localStorage.removeItem('premiumAccess');
+      window.location.href = 'index.html';
+    });
+
+    // Listen for Snipcart events (add after Snipcart loads)
+    document.addEventListener('snipcart.ready', () => {
+      Snipcart.events.on('cart.confirmed', (cart) => {
+        // After payment success
+        const isSubscription = cart.items.find(item => item.id.includes('premium'));
+        if (isSubscription) {
+          const type = cart.items[0].id.includes('monthly') ? 'monthly' : 'onetime';
+          const expires = type === 'onetime' ? Date.now() + 30 * 24 * 60 * 60 * 1000 : null;
+
+          localStorage.setItem('premiumAccess', JSON.stringify({
+            user: currentUser,
+            active: true,
+            type: type,
+            expires: expires,
+            lastUpdated: Date.now()
+          }));
+
+          checkPremiumAccess(); // refresh UI
+          alert('Thank you! Premium access unlocked.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
