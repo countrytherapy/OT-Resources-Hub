@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- your existing head stuff -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account – OT Resource Hub</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Load Supabase -->
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    const supabaseUrl = 'https://ymtamonkaajuxxwcslbg.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltdGFtb25rYWFqdXh4d2NzbGJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzMjg1ODUsImV4cCI6MjA4MDkwNDU4NX0.dSZ0vvTE0Y2MbUHPnrsviMYGi_us7jf2Kr2R6Os195E';
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    window.supabase = supabase;
+  </script>
 </head>
 <body>
 
   <header>
-    <!-- your navbar, add a "Dashboard" link if logged in -->
+    <!-- your navbar here -->
+    <!-- Example: -->
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="resources.html">Resources</a>
+      <!-- add more links -->
+    </nav>
   </header>
 
   <section class="hero">
     <h1>Welcome to Your Dashboard</h1>
-    <p id="greeting">Loading...</p>
+    <p id="greeting">Loading your account...</p>
   </section>
 
   <div class="container">
+    <div id="loading" style="text-align:center; padding: 60px; display: block;">
+      <p>Checking access...</p>
+    </div>
+
     <div id="premium-content" style="display: none;">
       <h2>Your Premium Access</h2>
       <p>Here are your exclusive videos and resources:</p>
-      <!-- embed videos, links to PDFs, etc. -->
+      <!-- Replace with your real content -->
       <div class="video-grid">
-        <video controls src="videos/therapy-demo.mp4"></video>
-        <!-- more content -->
+        <video controls src="videos/therapy-demo.mp4" width="600"></video>
+        <!-- add more videos / iframes / download links -->
       </div>
       <a href="resources.html">Go to Full Resource Library</a>
     </div>
@@ -30,66 +54,91 @@
     <div id="no-premium" style="display: none;">
       <h2>Unlock Premium Access</h2>
       <p>Get videos, guides, and monthly updates for just $5/month or $9 for 30 days.</p>
-      <a href="paymentGateway.html">Choose a Plan</a>
+      <a href="paymentGateway.html" class="btn btn-primary">Choose a Plan</a>
     </div>
   </div>
 
-  <button id="logout">Log Out</button>
+  <button id="logout" style="margin: 40px auto; display: block; padding: 12px 32px;">
+    Log Out
+  </button>
 
-  <!-- your existing Snipcart script -->
+  <!-- Snipcart (if you're still using it on this site) -->
+  <!-- Paste your Snipcart script here if needed -->
 
-  <script>
-    // Check login first
-    const currentUser = localStorage.getItem('loggedInUser'); // assuming you store email or username here on login
-    if (!currentUser) {
-      window.location.href = 'login.html'; // or wherever your login is
-    }
+  <script type="module">
+    const greeting = document.getElementById('greeting');
+    const loading = document.getElementById('loading');
+    const premiumContent = document.getElementById('premium-content');
+    const noPremium = document.getElementById('no-premium');
 
-    document.getElementById('greeting').textContent = `Hello, ${currentUser}!`;
+    // ── 1. Check Supabase login status ───────────────────────────────────────
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        console.log('No active session → redirecting to login');
+        window.location.href = 'login.html';
+        return;
+      }
 
-    // Check premium status
-    function checkPremiumAccess() {
+      // User is logged in
+      const userEmail = session.user.email || 'User';
+      greeting.textContent = `Hello, ${userEmail}!`;
+
+      // Hide loading, show main content
+      loading.style.display = 'none';
+
+      // ── 2. Check premium status (localStorage for now) ──────────────────────
+      checkPremiumAccess(userEmail);
+
+    }).catch(err => {
+      console.error('Session check failed:', err);
+      window.location.href = 'login.html';
+    });
+
+    // Premium check function
+    function checkPremiumAccess(currentUser) {
       const premiumData = JSON.parse(localStorage.getItem('premiumAccess') || '{}');
       const now = Date.now();
 
       if (premiumData.user === currentUser && premiumData.active) {
-        if (premiumData.type === 'monthly' || (premiumData.type === 'onetime' && premiumData.expires > now)) {
-          document.getElementById('premium-content').style.display = 'block';
-          document.getElementById('no-premium').style.display = 'none';
+        if (premiumData.type === 'monthly' || 
+            (premiumData.type === 'onetime' && premiumData.expires > now)) {
+          premiumContent.style.display = 'block';
+          noPremium.style.display = 'none';
           return;
         }
       }
-      document.getElementById('premium-content').style.display = 'none';
-      document.getElementById('no-premium').style.display = 'block';
+
+      premiumContent.style.display = 'none';
+      noPremium.style.display = 'block';
     }
 
-    checkPremiumAccess();
-
-    // Logout
-    document.getElementById('logout').addEventListener('click', () => {
-      localStorage.removeItem('loggedInUser');
+    // ── Logout ───────────────────────────────────────────────────────────────
+    document.getElementById('logout').addEventListener('click', async () => {
+      await supabase.auth.signOut();
       localStorage.removeItem('premiumAccess');
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     });
 
-    // Listen for Snipcart events (add after Snipcart loads)
+    // ── Listen for Snipcart payment success (if Snipcart is loaded) ──────────
     document.addEventListener('snipcart.ready', () => {
       Snipcart.events.on('cart.confirmed', (cart) => {
-        // After payment success
-        const isSubscription = cart.items.find(item => item.id.includes('premium'));
-        if (isSubscription) {
-          const type = cart.items[0].id.includes('monthly') ? 'monthly' : 'onetime';
+        const currentUser = supabase.auth.getSession().then(s => s.data.session?.user?.email);
+        if (!currentUser) return;
+
+        const isPremiumItem = cart.items.find(item => item.id.includes('premium'));
+        if (isPremiumItem) {
+          const type = isPremiumItem.id.includes('monthly') ? 'monthly' : 'onetime';
           const expires = type === 'onetime' ? Date.now() + 30 * 24 * 60 * 60 * 1000 : null;
 
           localStorage.setItem('premiumAccess', JSON.stringify({
             user: currentUser,
             active: true,
-            type: type,
-            expires: expires,
+            type,
+            expires,
             lastUpdated: Date.now()
           }));
 
-          checkPremiumAccess(); // refresh UI
+          checkPremiumAccess(currentUser);
           alert('Thank you! Premium access unlocked.');
         }
       });
