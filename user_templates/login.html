@@ -80,26 +80,9 @@
         message.textContent = 'Success! Taking you home...';
         message.style.color = 'green';
         setTimeout(() => {
-          window.location.href = '/dashboard.html';  // Go to dashboard
+          window.location.href = '/user_templates/dashboard.html';
         }, 1500);
       }
-    });
-
-    // Google Login
-    googleBtn.addEventListener('click', async () => {
-      message.textContent = 'Redirecting to Google...';
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin + '/dashboard.html' 
-        }
-      });
-
-      if (error) {
-        message.textContent = error.message;
-        message.style.color = 'red';
-      }
-      // If no error, browser will redirect to Google
     });
   </script>
 </body>
