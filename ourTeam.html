@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="assets/Logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | OT Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Logo + Text (always visible) -->
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/Logo.png" alt="OT Resource Hub Logo" class="logo-img">
+                    <span class="logo-text">OT Resource Hub</span>
+                </a>
+            </div>
+
+            <!-- Desktop nav links – visible on large screens -->
+            <ul class="nav-links desktop-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="learning.html">Learning</a></li>
+                <li><a href="user_templates/login.html">Login</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Mobile hamburger (only on small screens) -->
+            <label for="nav-toggle" class="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Hidden toggle input -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+            <!-- Mobile side menu – slides from RIGHT -->
+            <div class="mobile-side-nav">
+                <!-- Close (X) button -->
+                <label for="nav-toggle" class="close-btn">×</label>
+
+                <ul class="nav-links mobile-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="learning.html">Learning</a></li>
+                    <li><a href="user_templates/login.html">Login</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+<section class="team-section">
+  <h1>Meet Our Team</h1>
+  <p class="team-intro">
+    We are a passionate group of occupational therapists, educators, and parents
+    dedicated to providing the best resources for the OT community.
+  </p>
+
+  <div class="team-member-row odd">
+    <img src="assets/team_member_1.jpg" alt="name" class="team-photo">
+    <div class="team-info">
+      <h3>Name</h3>
+      <span class="team-role">Job Role</span>
+      <p>
+        Description
+      </p>
+    </div>
+  </div>
+
+ <div class="team-member-row even">
+    <img src="assets/team_member_1.jpg" alt="name" class="team-photo">
+    <div class="team-info">
+      <h3>Name</h3>
+      <span class="team-role">Job Role</span>
+      <p>
+        Description
+      </p>
+    </div>
+  </div>
+</section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Occupational Therapy Resource Hub. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html">Terms of Service</a></li>
+                <li><a href="ourTeam.html">Our Team</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
