@@ -355,6 +355,13 @@
                 }
             }, 2000);
         });
+        document.getElementById('currency-select').addEventListener('change', (e) => {
+  const cur = e.target.value;
+  if (cur && SUPPORTED_CURRENCIES.includes(cur)) {
+    localStorage.setItem('preferredCurrency', cur);
+    applyCurrency(cur);
+  }
+});
     </script>
 </body>
 </html>
