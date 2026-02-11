@@ -12,24 +12,74 @@
   <script src="/currency.js"></script>
 
   <script>
-
     window.SnipcartSettings = {
-        publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
-        loadStrategy: 'on-user-interaction',
+      publicApiKey: 'MWU3MjEzYmQtYjk5My00MzQxLWEwNjgtYzJkMjJlZTRiOGE3NjM5MDE5NTc1MjM3NDgyMDE2',
+      loadStrategy: 'on-user-interaction',
+      modalStyle: 'side',
     };
 
-    (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+    // Robust Snipcart loader (same as product pages)
+    (function(){
+      var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");
+      var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);
+      var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");
+      var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");
+      var f = window.SnipcartSettings.version.includes("v3.0.0-ci") ||
+              window.SnipcartSettings.version!="3.0" &&
+              window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1;
+      var m=["focus","mouseover","touchmove","scroll","keydown"];
+      window.LoadSnipcart=o;
+      document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();
+      function r(){window.SnipcartSettings.loadStrategy?
+        window.SnipcartSettings.loadStrategy==="on-user-interaction"&&
+        (m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}
+      var a=!1;function o(){if(a)return;a=!0;
+        let t=document.getElementsByTagName("head")[0],
+            e=document.querySelector("#snipcart"),
+            i=document.querySelector(`script[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),
+            n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);
+        e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e));
+        if(!f){e.dataset.apiKey=window.SnipcartSettings.publicApiKey;
+          if(window.SnipcartSettings.addProductBehavior)e.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior;
+          if(window.SnipcartSettings.modalStyle)e.dataset.configModalStyle=window.SnipcartSettings.modalStyle;
+          if(window.SnipcartSettings.currency)e.dataset.currency=window.SnipcartSettings.currency;
+          if(window.SnipcartSettings.templatesUrl)e.dataset.templatesUrl=window.SnipcartSettings.templatesUrl;
+        }
+        i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i));
+        n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n));
+        m.forEach(g=>document.removeEventListener(g,o));
+      }
+    })();
 
-    // Load shared header
+    // Load header + init currency (same as product pages)
     fetch('/header.html')
       .then(r => r.text())
-      .then(html => document.getElementById('shared-header').innerHTML = html);
+      .then(html => {
+        document.getElementById('shared-header').innerHTML = html;
+        if (typeof window.initCurrency === 'function') {
+          window.initCurrency();
+        } else {
+          console.warn('currency.js not ready – retrying in 1s');
+          setTimeout(() => {
+            if (typeof window.initCurrency === 'function') window.initCurrency();
+          }, 1000);
+        }
+      })
+      .catch(err => console.error('Header load failed:', err));
   </script>
 
   <section class="products-hero">
     <h1>Shop Our Products</h1>
     <p>Digital downloads, therapy tools, and sensory resources created by licensed OTs.</p>
   </section>
+
+<div class="currency-switcher" style="justify-content: flex-start; padding-left: 2rem; max-width: 1200px; margin: 1.5rem auto 2.5rem;">
+  <label for="currency-select">Currency:</label>
+  <select id="currency-select" required>
+    <option value="" disabled selected>Loading currencies...</option>
+  </select>
+</div>
+
 
   <section class="products-section">
     <div class="products-grid">
@@ -328,56 +378,58 @@
     <span class="snipcart-items-count floating-cart-count"></span>
   </a>
 
-  <!-- Currency Detection & Update Script -->
-  <script>
-    async function detectAndSetCurrency() {
-      let currency = localStorage.getItem('preferredCurrency');
-
-      if (!currency) {
-        try {
-          const response = await fetch('https://ipapi.co/json/');
-          const data = await response.json();
-          currency = (data.currency === 'AUD') ? 'AUD' : 'AED';
-        } catch (error) {
-          console.warn('GeoIP failed, defaulting to AED');
-          currency = 'AED';
+<script>
+  // 1. Stronger safety: Wait longer + retry population multiple times if needed
+  document.addEventListener('DOMContentLoaded', () => {
+    const tryPopulate = (attempt = 1) => {
+      if (typeof window.populateDropdown === 'function' && typeof window.initCurrency === 'function') {
+        const select = document.getElementById('currency-select');
+        if (select && select.options.length <= 1) {
+          window.populateDropdown();
+          console.log(`Dropdown populated on attempt ${attempt}`);
+          // Also force re-apply current currency
+          if (localStorage.getItem('preferredCurrency')) {
+            window.applyCurrency(localStorage.getItem('preferredCurrency'));
+          }
         }
-        localStorage.setItem('preferredCurrency', currency);
+      } else if (attempt < 5) {
+        // Retry up to 5 times
+        setTimeout(() => tryPopulate(attempt + 1), 500);
+      } else {
+        console.error('Failed to populate dropdown after retries – check currency.js load order');
       }
+    };
 
-      // Update all visible currency symbols
-      document.querySelectorAll('.currency-symbol').forEach(el => {
-        el.textContent = currency;
-      });
+    // Initial delay + start retry chain
+    setTimeout(tryPopulate, 1500);
+  });
 
-      // Update Snipcart currency (now and when Snipcart loads)
-      function updateSnipcartCurrency() {
-        if (window.Snipcart) {
-          Snipcart.api.session.setCurrency(currency);
-        }
-      }
-      updateSnipcartCurrency();
-      document.addEventListener('snipcart.ready', updateSnipcartCurrency);
+  // 2. Ensure change listener is attached (run again after population)
+  setTimeout(() => {
+    const select = document.getElementById('currency-select');
+    if (select) {
+      // Remove old listeners to avoid duplicates, then add fresh one
+      select.removeEventListener('change', handleCurrencyChange);
+      select.addEventListener('change', handleCurrencyChange);
+      console.log('Currency change listener attached');
     }
+  }, 2500);
 
-    window.addEventListener('DOMContentLoaded', detectAndSetCurrency);
-
-    // Optional: Manual currency switch (if you add a dropdown later)
-    document.addEventListener('DOMContentLoaded', () => {
-      const select = document.getElementById('currency-select');
-      if (!select) return;
-
-      select.addEventListener('change', (e) => {
-        const newCurrency = e.target.value;
-        localStorage.setItem('preferredCurrency', newCurrency);
-        document.querySelectorAll('.currency-symbol').forEach(el => {
-          el.textContent = newCurrency;
-        });
-        if (window.Snipcart) {
-          Snipcart.api.session.setCurrency(newCurrency);
-        }
-      });
-    });
-  </script>
+  function handleCurrencyChange(e) {
+    const cur = e.target.value;
+    console.log('User selected currency:', cur); // debug log
+    if (cur && window.SUPPORTED_CURRENCIES?.includes(cur)) {
+      localStorage.setItem('preferredCurrency', cur);
+      if (typeof window.applyCurrency === 'function') {
+        window.applyCurrency(cur);
+        console.log('applyCurrency called for', cur);
+      } else {
+        console.error('applyCurrency function missing');
+      }
+    } else {
+      console.warn('Invalid currency selected:', cur);
+    }
+  }
+</script>
 </body>
 </html>
