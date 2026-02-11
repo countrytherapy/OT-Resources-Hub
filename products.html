@@ -379,57 +379,51 @@
   </a>
 
 <script>
-  // 1. Stronger safety: Wait longer + retry population multiple times if needed
-  document.addEventListener('DOMContentLoaded', () => {
-    const tryPopulate = (attempt = 1) => {
-      if (typeof window.populateDropdown === 'function' && typeof window.initCurrency === 'function') {
-        const select = document.getElementById('currency-select');
-        if (select && select.options.length <= 1) {
-          window.populateDropdown();
-          console.log(`Dropdown populated on attempt ${attempt}`);
-          // Also force re-apply current currency
-          if (localStorage.getItem('preferredCurrency')) {
-            window.applyCurrency(localStorage.getItem('preferredCurrency'));
-          }
-        }
-      } else if (attempt < 5) {
-        // Retry up to 5 times
-        setTimeout(() => tryPopulate(attempt + 1), 500);
-      } else {
-        console.error('Failed to populate dropdown after retries – check currency.js load order');
-      }
-    };
-
-    // Initial delay + start retry chain
-    setTimeout(tryPopulate, 1500);
-  });
-
-  // 2. Ensure change listener is attached (run again after population)
+// Safety re-apply + force dropdown population + manual change listener
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
+    // Force populate if still loading placeholder
     const select = document.getElementById('currency-select');
-    if (select) {
-      // Remove old listeners to avoid duplicates, then add fresh one
-      select.removeEventListener('change', handleCurrencyChange);
-      select.addEventListener('change', handleCurrencyChange);
-      console.log('Currency change listener attached');
+    if (select && select.options.length <= 1 && typeof window.populateDropdown === 'function') {
+      window.populateDropdown();
+      console.log('Forced dropdown population on listing page');
     }
-  }, 2500);
 
-  function handleCurrencyChange(e) {
-    const cur = e.target.value;
-    console.log('User selected currency:', cur); // debug log
-    if (cur && window.SUPPORTED_CURRENCIES?.includes(cur)) {
-      localStorage.setItem('preferredCurrency', cur);
-      if (typeof window.applyCurrency === 'function') {
-        window.applyCurrency(cur);
-        console.log('applyCurrency called for', cur);
-      } else {
-        console.error('applyCurrency function missing');
-      }
-    } else {
-      console.warn('Invalid currency selected:', cur);
+    // Apply current saved currency
+    if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+      window.applyCurrency(localStorage.getItem('preferredCurrency'));
+      console.log('Initial applyCurrency called on listing page');
     }
+
+    // Extra re-apply safety (like qty buttons do on product pages)
+    setTimeout(() => {
+      if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+        window.applyCurrency(localStorage.getItem('preferredCurrency'));
+        console.log('Safety re-apply 1');
+      }
+    }, 1500);
+
+    setTimeout(() => {
+      if (window.applyCurrency && localStorage.getItem('preferredCurrency')) {
+        window.applyCurrency(localStorage.getItem('preferredCurrency'));
+        console.log('Safety re-apply 2');
+      }
+    }, 3000);
+
+  }, 2000);  // same delay as working page
+});
+
+// Exact same change listener as working page
+document.getElementById('currency-select')?.addEventListener('change', (e) => {
+  const cur = e.target.value;
+  if (cur && SUPPORTED_CURRENCIES.includes(cur)) {
+    localStorage.setItem('preferredCurrency', cur);
+    applyCurrency(cur);
+    // Extra immediate re-call (mimics qty re-apply on product pages)
+    setTimeout(() => applyCurrency(cur), 300);
+    console.log(`Currency changed to ${cur} + re-applied`);
   }
+});
 </script>
 </body>
 </html>
