@@ -2540,11 +2540,11 @@ body {
 /* IMAGE */
 .team-photo {
   width: 320px;
-  height: 320px;
+  height: 380px; 
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
+
 
 /* TEXT */
 .team-info h3 {
